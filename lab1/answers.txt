@@ -11,10 +11,19 @@
 1.4
     1. Needed to add an out from the vertex shader to the fragment shader.
     2. Passing information from the vertex shader to the fragment shader.
-    3. ?, a uniform vec3 could be used instead 
-
-
-
+    3. flat shading (?), a uniform vec3 could be used instead
+1.5
+    1. Miswrote the rotatematrices, needed to make he vertices the same "winding"
+    2. By changing the order of the vertices
+1.6
+    1. Why do we need normal vectors for a model?
+    - they can be used for backface culling, smooth shading and more
+    2. What did you do in your fragment shader?
+    - I used the normals as color
+    3. Should a normal vector always be perpendicular to a certain triangle? If not, why?
+    - no, sometimes they should be the normal of a bigger surface / multiple triangles (?)
+    4. Now we are using glBindBuffer and glBufferData again. They deal with buffers, but in what way?
+    - glBindData binds a buffer as the "active" one, glBufferData uploads the data
   
 
 

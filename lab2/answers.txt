@@ -1,0 +1,29 @@
+1. How are the textures coordinates mapped on the bunny? Can you see what geometry was used?
+    -  Linear mapping, top-left.  
+    What kind of procedural texture did you make?
+    -  Used the interpolated texture coordinates as color
+
+2.  How can you make a texture repeat multiple times over the bunny?
+    -  using wrapS, wrapT, with texture access outside the bounds
+    Why can't we just pass the texture object to the shader? 
+    There is a specific reason for this, a limited resource. What? 
+    (No, it is not that we must avoid re-uploading from CPU. The texture object is on the GPU!)
+    - Limited amount of texture units
+
+3.  How did you move the bunny to get it in view?
+    -  Using a translate matrix
+
+4. Given a certain vector for v, is there some place you can't place the camera?
+   -  Above/below the vector, division by zero in the cross product
+
+5. Did you implement your light calculations in the vertex or fragment shader? So, which kind of shading did you implement?
+  - in the fragment shader, Phong shading
+  Some geometry data must be vec4, others are just as well vec3's. Which ones, and why? How about vertices, light source, normal vectors...?
+  - Things needing translations are usulally vec/mat4s, so positions & point-lights.
+
+6. Was the difference big? If not, why?
+  - No, both are the normals interpolated, but gouroud lines are more prominent
+
+7. If you rotate an object or rotate the camera, what matrices are affected?
+  - moving an object => modelmatrix, moving camera => viewmatrix
+

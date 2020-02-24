@@ -16,8 +16,8 @@
 #include <math.h>
 
 #define ROTATEX 0
-#define ROTATEY 0
-#define ROTATEZ 1
+#define ROTATEY 1
+#define ROTATEZ 0
 
 
 const int nr_triangles  = 6*3;
@@ -48,9 +48,9 @@ GLfloat vertices[] = {
 	0.5, -0.5f, 0.5f,
 
 	// other Bottom
-	0.5, -0.5f, 0.5f,
-	-0.5, -0.5f, -0.5f,
 	-0.5, -0.5f, 0.5f,
+	-0.5, -0.5f, -0.5f,
+	0.5, -0.5f, 0.5f,
 
 };
 
@@ -159,16 +159,16 @@ void display(void)
 	GLfloat t = (GLfloat)glutGet(GLUT_ELAPSED_TIME);
 	float dt = t / 300.;
 	
-	#if ROTATEX
+	#if ROTATEZ
 	GLfloat myMatrix[] = { 
-		cos(dt), 0.0f, sin(dt), 0.5f,
-		0.0f, 1.0f, 0.0f, 0.0f,
+		cos(dt), 0.0f, sin(dt), 0.f,
+		0.0f, 1.0f, 0.0f, -0.0f,
 		-sin(dt), 0.0f, cos(dt), 0.0f,
 		0.0f, 0.0f, 0.0f, 1.0f 
 	};
 	#endif
 	
-	#if ROTATEY
+	#if ROTATEX
 	GLfloat myMatrix[] = { 
 		cos(dt), -sin(dt), 0.0, 0.5f,
 		sin(dt), cos(dt), 0.0f, 0.0f,
@@ -177,11 +177,11 @@ void display(void)
 	};
 	#endif
 
-	#if ROTATEZ
+	#if ROTATEY
 	GLfloat myMatrix[] = { 
 		1.0f, 0.0f, 0.0f, 0.0f,
-		cos(dt), -sin(dt), 0.0, 0.0f,
-		sin(dt), cos(dt), 0.0f, 0.0f,
+		0.0f, cos(dt), -sin(dt), -0.5f,
+		0.0f, sin(dt), cos(dt), 0.0f,
 		0.0f, 0.0f, 0.0f, 1.0f,
 	};
 	#endif

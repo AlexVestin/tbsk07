@@ -19,23 +19,17 @@
 // Data would normally be read from files
 GLfloat vertices[] =
 {
-   -0.5f, 0.f, -0.5f,
-	0.5f,0.0f, -0.5f,
-	0.5f,-0.0f, 0.5f,
-
-
-	-0.5f, 0.0f, -0.5f,
-	-0.5f, 0.0f, 0.5f,
-	0.5f, 0.0f,0.5f,
-
+  -0.5f,-0.1f,0.0f,
+	-0.5f,0.95f,0.0f,
+	0.5f,-0.5f,0.0f
 };
 
 
 GLfloat colors[] =
 {
-	-0.5f,-0.1f,0.0f,
-	-0.5f,0.95f,0.0f,
-	0.5f,-0.5f,0.0f
+	1.0f, 0.f,0.0f,
+	0.f,1.0f,0.0f,
+	0.f,0.f,1.0f
 };
 
 
@@ -51,12 +45,8 @@ void init(void)
 
 	dumpInfo();
 	
-
-	
-
 	// GL inits
 	glClearColor(0.2,0.2,0.5,0);
-	glDisable(GL_DEPTH_TEST);
 	printError("GL inits");
 
 	// Load and compile shader
@@ -79,8 +69,6 @@ void init(void)
 	glBufferData(GL_ARRAY_BUFFER, 9*sizeof(GLfloat), vertices, GL_STATIC_DRAW);
 	glVertexAttribPointer(glGetAttribLocation(program, "in_Position"), 3, GL_FLOAT, GL_FALSE, 0, 0); 
 	glEnableVertexAttribArray(glGetAttribLocation(program, "in_Position"));
-
-
 
 	GLuint colorBufferObjID;
 	glGenBuffers(1, &colorBufferObjID);
