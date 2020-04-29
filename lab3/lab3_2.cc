@@ -75,7 +75,6 @@ void init(void)
     blades = LoadModelPlus("windmill/blade.obj");
     roof = LoadModelPlus("windmill/windmill-roof.obj");
     balcony = LoadModelPlus("windmill/windmill-balcony.obj");
-
 	mill = LoadModelPlus("windmill/windmill-walls.obj");
 
 

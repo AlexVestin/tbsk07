@@ -71,6 +71,18 @@ GLuint myTex;
 GLuint groundProgram, groundTex;
 GLuint groundVertexArrayObjID, groundBufferObjID;
 
+vec3 lightSourcesColorsArr[] = { {1.0f, 0.0f, 0.0f}, // Red light
+                                 {0.0f, 1.0f, 0.0f}, // Green light
+                                 {0.0f, 0.0f, 1.0f}, // Blue light
+                                 {1.0f, 1.0f, 1.0f} }; // White light
+
+vec3 lightSourcesDirectionsPositions[] = { {10.0f, 5.0f, 0.0f}, // Red light, positional
+                                       {0.0f, 5.0f, 10.0f}, // Green light, positional
+                                       {-1.0f, 0.0f, 0.0f}, // Blue light along X
+                                       {0.0f, 0.0f, -1.0f} }; // White light along Z
+
+GLfloat specularExponent[] = {100.0, 200.0, 60.0, 50.0, 300.0, 150.0};
+GLint isDirectional[] = {0,0,1,1};
 void init(void)
 {
 	// vertex buffer object, used for uploading the geometry
@@ -123,7 +135,7 @@ void init(void)
 	glEnable(GL_DEPTH_TEST);
 	
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
-	program = loadShaders("lab3_3.vert", "lab3_3.frag");
+	program = loadShaders("lab3_4.vert", "lab3_4.frag");
 	glUseProgram(program);
 	glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_TRUE, lkAt.m);
 	glUniformMatrix4fv(glGetUniformLocation(program, "proj"), 1, GL_TRUE, projectionMatrix);
@@ -151,6 +163,16 @@ void init(void)
 void OnTimer(int value) {
     glutPostRedisplay();
     glutTimerFunc(20, &OnTimer, value);
+}
+
+void applyLights(GLuint program) {
+	glUniform3fv(glGetUniformLocation(program, "viewPos"), 1, &cameraPosition.x);
+	glUniform3fv(glGetUniformLocation(program, "lightSourcesDirPosArr"), 4, &lightSourcesDirectionsPositions[0].x);
+	glUniform3fv(glGetUniformLocation(program, "lightSourcesColorArr"), 4, &lightSourcesColorsArr[0].x);
+	for(int i = 0; i < 5; i++) {
+		glUniform1f(glGetUniformLocation(program, "specularExponent"), specularExponent[i]);
+	}
+	glUniform1iv(glGetUniformLocation(program, "isDirectional"), 4, isDirectional);
 }
 
 
@@ -192,7 +214,6 @@ void display(void)
 		cameraDirection.x += movementAmount* 10.;
 	}
 
-
 	if (glutKeyIsDown('k')) {
 		cameraPosition.y += movementAmount;
 		cameraDirection.y += movementAmount;
@@ -231,6 +252,8 @@ void display(void)
 	mat4 trans, rot;
 	total = T(0, 0, 0);
 	glUseProgram(program);
+	applyLights(program);
+
 	glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_TRUE, lkAt.m);
 	glUniformMatrix4fv(glGetUniformLocation(program, "model"),1, GL_TRUE, total.m);
 
