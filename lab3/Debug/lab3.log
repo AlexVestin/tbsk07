@@ -1,0 +1,10 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (lab2.vcxproj, psychteapot.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  lab3-4.c
+c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(45): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(142): warning C4305: 'function': truncation from 'double' to 'GLfloat'
+c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(126): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(226): warning C4244: 'function': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(287): warning C4244: 'function': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(366): warning C4133: 'function': incompatible types - from 'vec3 *' to 'const GLfloat *'
+c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(373): warning C4133: 'function': incompatible types - from 'vec3 *' to 'const GLfloat *'
+  lab3.vcxproj -> C:\Users\avgru\VisualStudioProjects\tsbk07\lab3\Debug\lab3.exe

@@ -1,0 +1,38 @@
+Q1:
+How can you get all four blades to rotate with just one time-dependent rotation matrix?
+   You could have a uniform rotation matrix in the shader, 
+     that holds an parameter for the angle. Then you just need to send in a new angle for every blade.
+How do you make the wings follow the body's movements?
+   You have a transformation matrix that you apply to every part of the windmill. 
+   This must be applied before you do the individual transformations.
+
+Q2:
+What kind of control did you implement?
+   I implemented keyboard controls, where you move forwards/backwards with w/s, 
+     left/right with a/s, turn left/right with q/e and go up/down with i/o 
+Can you make this kind of control in some other way than manipulating a "look-at" matrix?
+   Yes! As of now, I need to move the point I'm looking at so that 
+     it always is in front of the camera. 
+   It would be better to just use a directional vector instead, which I'm already having.
+
+Q3:
+How did you handle the camera matrix for the skybox?
+   As I send in the camera matrix as a uniform to the vertex shader, I have to multiply the skybox transformation matrix with the inverse
+    camera matrix, in order to zero out the translation/rotation. I then multiply that with the camera matrix without the translation component, 
+    which gives us the correct transformation.
+
+How did you represent the objects? Is this a good way to manage a scene or would you do it differently for a "real" application?
+   each of the objects are hard coded into the program, and is handled in a static sequence. A better way to do it would be to "load in"
+    any object, and then have methods that can load and draw a generic list of objects instead. That would make the program much more scalable.
+
+What special considerations are needed when rendering a skybox?
+   The positioning is rather special, as it has to wrap around the camera at all times. Then you need to have a seperate fragment shader
+    that doesn't apply shadows to it. You also need to disable Culling/Depth test, and let the texture clamp to the edges, rather than 
+    repeat. Some skyboxes also use a cubic layout instead of a 2 dimensional one. Then you need to label all the 6 sides correctly.
+
+What is the problem with the skybox object used in the lab? (The problem doesn't have to be corrected.)
+   Could it be that the image isn't skewed correctly? As it is now, the clouds gets abberated at the cube's corners.
+   Another problem with the skybox in general is that we draw it first, which means that a lot of the drawn texels will be overwritten by
+    objects from the world. We should instead draw it last, and skip any pixel that already has a value.
+
+Q4:
