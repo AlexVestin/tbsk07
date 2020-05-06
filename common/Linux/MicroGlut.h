@@ -112,6 +112,10 @@ void glutExit();
 #define GLUT_KEY_KEYPAD5		19
 #define GLUT_KEY_KEYPAD_NUMLOCK	20
 
+#define GLUT_KEY_SPACEBAR 120
+#define GLUT_KEY_SHIFT	121
+
+
 // These obvious ones...
 #define GLUT_KEY_ESC			27
 #define GLUT_KEY_TAB			9

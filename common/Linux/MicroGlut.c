@@ -413,6 +413,10 @@ void doKeyboardEvent(XEvent event, void (*keyProc)(unsigned char key, int x, int
 		case 62: buffer[0] = GLUT_KEY_RIGHT_SHIFT; break;
 		case 37:case 105: buffer[0] = GLUT_KEY_CONTROL; break;
 		case 64:case 108: buffer[0] = GLUT_KEY_ALT; break;
+		case 65: buffer[0] = GLUT_KEY_SPACEBAR; break;
+
+
+
 		case 133:case 134: buffer[0] = GLUT_KEY_COMMAND; break;
 
 // Keypad
@@ -763,7 +767,7 @@ char glutKeyIsDown(unsigned char c)
 	return gKeymap[(unsigned int)c];
 }
 
-// Added by the Risinger/RŒberg/Wikstršm project! But... gButtonPressed
+// Added by the Risinger/Rï¿½berg/Wikstrï¿½m project! But... gButtonPressed
 // was already here! Did I miss something?
 char glutMouseIsDown(unsigned char c)
 {

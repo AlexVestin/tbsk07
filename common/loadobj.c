@@ -1172,6 +1172,7 @@ void DrawModel(Model *m, GLuint program, const char* vertexVariableName, const c
 
 		glBindBuffer(GL_ARRAY_BUFFER, m->vb);
 		loc = glGetAttribLocation(program, vertexVariableName);
+
 		if (loc >= 0)
 		{
 			glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE, 0, 0); 
@@ -1180,6 +1181,8 @@ void DrawModel(Model *m, GLuint program, const char* vertexVariableName, const c
 		else
 			ReportRerror("DrawModel", vertexVariableName);
 		
+
+
 		if (normalVariableName!=NULL)
 		{
 			loc = glGetAttribLocation(program, normalVariableName);
@@ -1192,6 +1195,7 @@ void DrawModel(Model *m, GLuint program, const char* vertexVariableName, const c
 			else
 				ReportRerror("DrawModel", normalVariableName);
 		}
+
 	
 		// VBO for texture coordinate data NEW for 5b
 		if ((m->texCoordArray != NULL)&&(texCoordVariableName != NULL))
