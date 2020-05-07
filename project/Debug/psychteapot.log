@@ -1,0 +1,8 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (psychteapot.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.c
+c:\users\avgru\visualstudioprojects\tsbk07\project\main.c(45): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\avgru\visualstudioprojects\tsbk07\project\main.c(109): warning C4305: 'function': truncation from 'double' to 'GLfloat'
+c:\users\avgru\visualstudioprojects\tsbk07\project\main.c(93): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\avgru\visualstudioprojects\tsbk07\project\main.c(213): warning C4101: 'rot': unreferenced local variable
+c:\users\avgru\visualstudioprojects\tsbk07\project\main.c(227): warning C4133: 'function': incompatible types - from 'vec3 *' to 'const GLfloat *'
+  psychteapot.vcxproj -> C:\Users\avgru\VisualStudioProjects\tsbk07\project\Debug\project.exe
