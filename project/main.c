@@ -21,6 +21,12 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 
+#define FLAT_SHADING 0
+
+#define LAMBERT_SHADING 1
+
+#define PHONG_SHADING 2
+
 #define near 1.0
 
 #define far 300.0
@@ -57,20 +63,22 @@ vec3 camPos, camDir;
 Model *teapot;
 
 // Light sources and their variables.
-GLuint lightNo = 1;
+GLuint lightNo = 2;
 
 // Specular exponents for each object.
 GLfloat specularExponent[] = { 100.0 };
 
 // Values for light sources.
 vec3 lightSourcesColorsArr[] = {
-	{1.0f, 1.0f, 1.0f}  // White light
+	{1.0f, 1.0f, 1.0f},  // White light
+	{1.0f, 0.0f, 0.0f}	 // Red light
 };
 
-GLint isDirectional[] = { 1 };
+GLint isDirectional[] = { 1, 1 };
 
 vec3 lightSourcesDirectionsPositions[] = {
-	{1.0f, 1.0f, 0.0f} 
+	{1.0f, 1.0f, 0.0f},
+	{0.0f,-1.0f, 1.0f}
 };
 
 // vertex array object
@@ -211,6 +219,8 @@ void init(void)
 
 void draw() {
 	mat4 trans, rot;
+
+	glUniform1i(glGetUniformLocation(program, "shadingMode"), FLAT_SHADING);
 
 	trans = T(1, 1, 0);
 	glUniformMatrix4fv(glGetUniformLocation(program, "tranMatrix"), 1, GL_TRUE, trans.m);
