@@ -3,6 +3,6 @@
 c:\users\avgru\visualstudioprojects\tsbk07-alex\tbsk07\project\main.c(51): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
 c:\users\avgru\visualstudioprojects\tsbk07-alex\tbsk07\project\main.c(117): warning C4305: 'function': truncation from 'double' to 'GLfloat'
 c:\users\avgru\visualstudioprojects\tsbk07-alex\tbsk07\project\main.c(101): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-c:\users\avgru\visualstudioprojects\tsbk07-alex\tbsk07\project\main.c(221): warning C4101: 'rot': unreferenced local variable
-c:\users\avgru\visualstudioprojects\tsbk07-alex\tbsk07\project\main.c(237): warning C4133: 'function': incompatible types - from 'vec3 *' to 'const GLfloat *'
+c:\users\avgru\visualstudioprojects\tsbk07-alex\tbsk07\project\main.c(227): warning C4305: 'function': truncation from 'double' to 'GLfloat'
+c:\users\avgru\visualstudioprojects\tsbk07-alex\tbsk07\project\main.c(239): warning C4133: 'function': incompatible types - from 'vec3 *' to 'const GLfloat *'
   psychteapot.vcxproj -> C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\Debug\project.exe

@@ -10,8 +10,6 @@ uniform vec3  camPos;
 uniform int   lightSourcesNo = 1;
 uniform int   shadingMode;
 
-flat in vec3 flatNormal;
-
 in vec2 texCoord;
 in vec3 transNormal;
 in vec3 fragPosition;
@@ -22,10 +20,9 @@ void main(void)
 	// We normalize the normal vector (just in case).
 	vec3 norm		  = normalize(transNormal);
 	// We have some ambient light in order to simulate general bouncing light
-	float ambStr	  = 0.1;
 	vec3  amb;	 
-	// We have a strength factor to our specular shine.
-	float specularStrength = 1.0;
+	// We have strength factors for our different types of light.
+	float specStr = 1.0, ambStr = 0.1, diffStr = 0.5;
 	// Then we have some variables that is used during the light calculations.
 	vec3  lightDir, viewDir, reflectDir, specular, diffuse;
 	float spec, diff;
@@ -33,7 +30,7 @@ void main(void)
 
 	for(int i = 0; i < lightSourcesNo; i++) {	
 	
-		// We get the ambient strength;
+		// We get the ambient light;
 		amb	= ambStr * lightSourcesColorArr[i];
 
 		// We check if the light is directional or not, and calculate the vector accordingly.
@@ -45,10 +42,17 @@ void main(void)
 		}
 
 		// Flat shading
-		// For a flat shaded surface, we're only interested in the angle between the normal and the light source.
+		// For a flat shaded surface, we're only interested in the angle between the face normal and the light source.
 		if(shadingMode == 0)
 		{
-			reflectDir = max(dot(lightDir, normalize(flatNormal)), 0.0) * lightSourcesColorArr[i];
+			// Instead of using the polygon corners, we get the face normal by calculating two tangents to the surface.
+			// We're not using transNormal as it's interpolated between the vertices.
+			// Code gathered from: https://gamedev.stackexchange.com/questions/154854/how-do-i-implement-flat-shading-in-glsl
+			vec3 xTangent   = dFdx( fragPosition );
+			vec3 yTangent   = dFdy( fragPosition );
+			vec3 faceNormal = normalize( cross( xTangent, yTangent ) );
+
+			reflectDir = max(dot(lightDir, faceNormal), 0.0) * lightSourcesColorArr[i];
 			result	   = result + vec4(amb + reflectDir, 1.0);
 			continue;
 		}
@@ -56,7 +60,7 @@ void main(void)
 		// We calculate the diffuse light, which is the dot product between the previous vector and the normal.
 		// As we don't want any negative value, we have 0.0 as the lowest possible value.
 		diff	= max(dot(norm, lightDir), 0.0);
-		diffuse = diff * lightSourcesColorArr[i];
+		diffuse = diffStr * diff * lightSourcesColorArr[i];
 
 		// Lambert shading.
 		// For a Lambertian surface, we assume that the surface scatters the light evenly.
@@ -73,7 +77,7 @@ void main(void)
 
 		// After that, we calculate the specular component.
 		spec	 = pow(max(dot(viewDir, reflectDir), 0.0), specularExponent);
-		specular = specularStrength * spec * lightSourcesColorArr[i];  
+		specular = specStr * spec * lightSourcesColorArr[i];  
 
 		// Lastly, we combine the ambient, diffuse and specular light and add it to the result.
 		result = result + vec4((diffuse + amb + specular), 1.0);

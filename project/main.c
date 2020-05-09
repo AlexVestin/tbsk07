@@ -191,7 +191,7 @@ void init(void)
 	printError("GL inits");
 
 	// Init the camera coordinates
-	camPos = SetVector(25, 5, 0);
+	camPos = SetVector(10, 2, 0);
 	camDir = SetVector(-1, 0, 0);
 
 	// Load and compile shaders
@@ -218,12 +218,14 @@ void init(void)
 }
 
 void draw() {
+	GLfloat t = (GLfloat)glutGet(GLUT_ELAPSED_TIME);
 	mat4 trans, rot;
 
 	glUniform1i(glGetUniformLocation(program, "shadingMode"), FLAT_SHADING);
 
-	trans = T(1, 1, 0);
-	glUniformMatrix4fv(glGetUniformLocation(program, "tranMatrix"), 1, GL_TRUE, trans.m);
+	trans = T(0, 0, 0);
+	rot	  = Mult(Rx(-M_PI/2), Rz(t/2500)); // The teapot object is on the side.
+	glUniformMatrix4fv(glGetUniformLocation(program, "tranMatrix"), 1, GL_TRUE, Mult(trans, rot).m);
 	glUniform1f(glGetUniformLocation(program, "specularExponent"), specularExponent[0]);
 	DrawModel(teapot, program, "in_Position", "in_Normal", "inTexCoord");
 }
