@@ -7,15 +7,11 @@
 #define LAMBERT_SHADING 1
 #define PHONG_SHADING 2
 
-
-
-
 // Useful if loaded using LoadModelFromXXX
 Geometry::Geometry(Model* model) : model(model) {
 	glGenVertexArrays(1, &vao);
 	setUpGeometryBuffers();
 	createShader();
-
 };
 
 
@@ -97,16 +93,16 @@ void Geometry::createShader() {
 	glUniform1i(glGetUniformLocation(program, "lightSourcesNo"), lightNo);
 }
 
-
-
 void Geometry::draw(float t, GLfloat* camMatrix, GLfloat* camPos) {
 	glUseProgram(program);
 	glBindVertexArray(vao);
 		
 	GLfloat specularExponent[] = { 100.0 };
 	// Update unfiforms
-	
+	// We pass a camera (view) matrix.
 	glUniformMatrix4fv(glGetUniformLocation(program, "camMatrix"), 1, GL_TRUE, camMatrix);
+
+	// We pass its position (Is needed in the fragment shader).
 	glUniform3fv(glGetUniformLocation(program, "camPos"), 1, camPos);
 
 	glUniform1i(glGetUniformLocation(program, "shadingMode"), FLAT_SHADING);
@@ -115,7 +111,6 @@ void Geometry::draw(float t, GLfloat* camMatrix, GLfloat* camPos) {
 	glUniformMatrix4fv(glGetUniformLocation(program, "tranMatrix"), 1, GL_TRUE, Mult(trans, rot).m);
 	glUniform1f(glGetUniformLocation(program, "specularExponent"), specularExponent[0]);
 	glUniform1f(glGetUniformLocation(program, "time"), t / 1000.);
-	
 	glDrawElementsInstanced(GL_TRIANGLES, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
 }
 
@@ -130,18 +125,8 @@ void Geometry::setUpInstanceBuffers(std::vector<GLfloat>& startPositions, std::v
 
 
 void Geometry::setUpInstanceBuffers(std::vector<GLfloat>& startPositions) {
-		
 	instanceCount = startPositions.size() / 3;
-
-	glBindVertexArray(vao);
-	GLuint startPositionsBuffer;
-	glGenBuffers(1, &startPositionsBuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, startPositionsBuffer);
-	glBufferData(GL_ARRAY_BUFFER,  startPositions.size() * sizeof(GLfloat), &startPositions[0], GL_STATIC_DRAW);
-
-	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glVertexAttribDivisor(2, 1);
+	createBuffer(startPositions, 2, 3);
 }
 
 

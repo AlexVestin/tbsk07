@@ -95,9 +95,6 @@ mat4 updateCameraCoord() {
 	return getCameraCoord();
 }
 
-
-
-
 void init(void)
 {
 	dumpInfo();
@@ -137,11 +134,6 @@ void init(void)
 
 void draw() {
 	GLfloat t = (GLfloat)glutGet(GLUT_ELAPSED_TIME);
-	// We pass a camera (view) matrix.
-	//glUniformMatrix4fv(glGetUniformLocation(program, "camMatrix"), 1, GL_TRUE, updateCameraCoord().m);
-	// We pass its position (Is needed in the fragment shader).
-	//glUniform3f(glGetUniformLocation(program, "camPos"), camPos.x, camPos.y, camPos.z);
-
 	g->draw(t, updateCameraCoord().m, &camPos.x);
 }
 
