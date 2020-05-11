@@ -6,45 +6,41 @@
 
 // Should work as is on Linux and Mac. MS Windows needs GLEW or glee.
 // See separate Visual Studio version of my demos.
+#include <Windows.h>
 #ifdef __APPLE__
 #include <OpenGL/gl3.h>
-// Linking hint for Lightweight IDE
-// uses framework Cocoa
+	// Linking hint for Lightweight IDE
+	// uses framework Cocoa
 #endif
 
+
 #include "MicroGlut.h"
+#if defined(_WIN32)
+#include "glew.h"
+#endif
+#include <GL/gl.h>
+
+
 #include "GL_utilities.h"
 #include "VectorUtils3.h"
 #include <math.h>
 #include <loadobj.h>
 #include <LoadTGA.h>
+#include "Geometry.h"
 
 #define _CRT_SECURE_NO_WARNINGS
-
 #define FLAT_SHADING 0
-
 #define LAMBERT_SHADING 1
-
 #define PHONG_SHADING 2
-
 #define near 1.0
-
 #define far 300.0
-
 #define right 0.5
-
 #define left -0.5
-
 #define top 0.5
-
 #define bottom -0.5
-
 #define modelno 4
-
 #define frameFreq 20
-
 #define pi 3.1415
-
 #define LENGTH(x) (sizeof(x) / sizeof((x)[0]))
 
 // Globals
@@ -214,6 +210,7 @@ void init(void)
 
 	// Load the models.
 	teapot = LoadModelPlus("teapot.obj");
+	Geometry g{ teapot };
 
 }
 
@@ -231,12 +228,12 @@ void draw() {
 }
 
 void display(void)
-{
+{	
 	glUseProgram(program);
 	// We pass a camera (view) matrix.
 	glUniformMatrix4fv(glGetUniformLocation(program, "camMatrix"), 1, GL_TRUE, updateCameraCoord().m);
 	// We pass its position (Is needed in the fragment shader).
-	glUniform3fv(glGetUniformLocation(program, "camPos"), 1, &camPos);
+	glUniform3f(glGetUniformLocation(program, "camPos"), camPos.x, camPos.y, camPos.z);
 	// We also pass the world projection matrix
 	glUniformMatrix4fv(glGetUniformLocation(program, "projMatrix"), 1, GL_TRUE, projectionMatrix);
 
@@ -261,6 +258,12 @@ void OnTimer(int value)
 
 int main(int argc, char *argv[])
 {
+		
+	// Allocate console, unsure if neeeded / there is a better solution
+	AllocConsole();
+	freopen("CONOUT$", "w", stdout);
+	freopen("CONOUT$", "w", stderr);
+
 	glutInit(&argc, argv);
 	glutInitContextVersion(3, 2);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
@@ -269,6 +272,8 @@ int main(int argc, char *argv[])
 #ifdef WIN32
 	glewInit();
 #endif
+
+
 	glutDisplayFunc(display);
 	glutTimerFunc(frameFreq, &OnTimer, 0);
 	init();

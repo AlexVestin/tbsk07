@@ -1,10 +1,48 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (lab2.vcxproj, psychteapot.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(467,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (lab2.vcxproj, psychteapot.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  GL_utilities.c
+C:\Users\alex\prog\tsbk07\lab3\common\GL_utilities.c(221,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  loadobj.c
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(130,3): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(131,3): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(151,5): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(152,5): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(174,5): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(175,5): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(710,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(711,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(712,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(718,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(720,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(722,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(749,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(1122,45): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(1123,47): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\lab3\common\loadobj.c(1124,47): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+  LoadTGA.c
+C:\Users\alex\prog\tsbk07\lab3\common\LoadTGA.c(107,11): warning C4018: '<': signed/unsigned mismatch
+C:\Users\alex\prog\tsbk07\lab3\common\LoadTGA.c(109,11): warning C4018: '<': signed/unsigned mismatch
+C:\Users\alex\prog\tsbk07\lab3\common\LoadTGA.c(176,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\alex\prog\tsbk07\lab3\common\LoadTGA.c(182,10): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\alex\prog\tsbk07\lab3\common\LoadTGA.c(271,9): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  VectorUtils3.c
+C:\Users\alex\prog\tsbk07\lab3\common\VectorUtils3.c(714,53): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\lab3\common\VectorUtils3.c(717,54): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\lab3\common\VectorUtils3.c(722,54): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+  glew.c
+  MicroGlut.c
+C:\Users\alex\prog\tsbk07\lab3\common\Windows\MicroGlut.c(218,1): warning C4133: 'function': incompatible types - from 'char [9]' to 'LPCWSTR'
+C:\Users\alex\prog\tsbk07\lab3\common\Windows\MicroGlut.c(372,46): warning C4047: 'function': 'LPWORD' differs in levels of indirection from 'unsigned char (*)[2]'
+C:\Users\alex\prog\tsbk07\lab3\common\Windows\MicroGlut.c(372,46): warning C4024: 'ToAsciiEx': different types for formal and actual parameter 4
+C:\Users\alex\prog\tsbk07\lab3\common\Windows\MicroGlut.c(538,31): warning C4133: '=': incompatible types - from 'char [9]' to 'LPCWSTR'
+C:\Users\alex\prog\tsbk07\lab3\common\Windows\MicroGlut.c(541,6): warning C4013: 'main' undefined; assuming extern returning int
+C:\Users\alex\prog\tsbk07\lab3\common\Windows\MicroGlut.c(719,6): warning C4101: 'windowHDC': unreferenced local variable
   lab3-4.c
-c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(45): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(142): warning C4305: 'function': truncation from 'double' to 'GLfloat'
-c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(126): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(226): warning C4244: 'function': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(287): warning C4244: 'function': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(366): warning C4133: 'function': incompatible types - from 'vec3 *' to 'const GLfloat *'
-c:\users\avgru\visualstudioprojects\tsbk07\lab3\lab3-4.c(373): warning C4133: 'function': incompatible types - from 'vec3 *' to 'const GLfloat *'
-  lab3.vcxproj -> C:\Users\avgru\VisualStudioProjects\tsbk07\lab3\Debug\lab3.exe
+C:\Users\alex\prog\tsbk07\lab3\lab3-4.c(45,35): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\alex\prog\tsbk07\lab3\lab3-4.c(142,30): warning C4305: 'function': truncation from 'double' to 'GLfloat'
+C:\Users\alex\prog\tsbk07\lab3\lab3-4.c(126,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\alex\prog\tsbk07\lab3\lab3-4.c(226,78): warning C4244: 'function': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\lab3\lab3-4.c(287,35): warning C4244: 'function': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\lab3\lab3-4.c(366,66): warning C4133: 'function': incompatible types - from 'vec3 *' to 'const GLfloat *'
+C:\Users\alex\prog\tsbk07\lab3\lab3-4.c(373,71): warning C4133: 'function': incompatible types - from 'vec3 *' to 'const GLfloat *'
+  Generating Code...
+  lab3.vcxproj -> C:\Users\alex\prog\tsbk07\lab3\Debug\lab3.exe
