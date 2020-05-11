@@ -405,6 +405,10 @@ static void doKeyboardEvent(WPARAM wParam, LPARAM lParam, void (*keyFunc)(unsign
 			case VK_DOWN:
 				c = GLUT_KEY_DOWN; break;
 
+			case VK_SPACE:
+				c = GLUT_KEY_SPACE; break;
+			case 16:
+				c = GLUT_KEY_LEFT_SHIFT; break;
 			case VK_ESCAPE:
 				c = GLUT_KEY_ESC; break;
 			case VK_PRIOR:
@@ -431,7 +435,7 @@ static void doKeyboardEvent(WPARAM wParam, LPARAM lParam, void (*keyFunc)(unsign
 			specialKeyFunc(c, 0, 0); // TO DO: x and y
 		}
 		gKeymap[c] = keyMapValue;
-		printf("key %i %i\n", c, keyMapValue);
+		//printf("key %i %i\n", c, keyMapValue);
 }
 
 

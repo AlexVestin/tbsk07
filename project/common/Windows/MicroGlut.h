@@ -91,8 +91,11 @@ void glutReshapeWindow(int width, int height);
 #define GLUT_KEY_HOME			24
 #define GLUT_KEY_END			25
 #define GLUT_KEY_INSERT			26
-
 #define GLUT_KEY_ESC			27
+#define GLUT_KEY_SPACE			55
+#define GLUT_KEY_LEFT_SHIFT		56
+
+
 #define GLUT_KEY_TAB			9
 #define GLUT_KEY_RETURN			13
 #define GLUT_KEY_SPACE			' '

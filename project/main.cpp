@@ -27,73 +27,15 @@
 #include <loadobj.h>
 #include <LoadTGA.h>
 #include "Geometry.h"
+#include "Camera.h"
 
 #define _CRT_SECURE_NO_WARNINGS
 
-
-#define modelno 4
 #define frameFreq 20
-#define pi 3.1415
-#define LENGTH(x) (sizeof(x) / sizeof((x)[0]))
-
-
-// Camera coordinates.
-vec3 camPos, camDir;
 
 // World objects
 Geometry* g;
 
-
-
-// Returns the camera coordinates
-mat4 getCameraCoord() {
-	vec3 focusPoint = VectorAdd(camDir, camPos);
-	mat4 camera = lookAt(
-		camPos.x, camPos.y, camPos.z,
-		focusPoint.x, focusPoint.y, focusPoint.z,
-		0, 1, 0
-	);
-	return camera;
-}
-
-// Updates and returns the camera coordinates.
-mat4 updateCameraCoord() {
-	vec3 ortDirX, ortDirY;
-	GLfloat turnValue = frameFreq / (7500 * pi), moveValue = frameFreq / 1500.0;
-	// First we see if the user is moving the camera.
-	if (glutKeyIsDown('q')) {
-		camDir = MultVec3(Ry(turnValue), camDir);
-	}
-	if (glutKeyIsDown('e')) {
-		camDir = MultVec3(Ry(-turnValue), camDir);
-	}
-
-	if (glutKeyIsDown('w')) {
-		camPos = VectorAdd(camPos, ScalarMult(camDir, moveValue));
-	}
-	if (glutKeyIsDown('s')) {
-		camPos = VectorAdd(camPos, ScalarMult(camDir, -moveValue));
-	}
-
-	ortDirX = MultVec3(Ry(pi / 2), camDir);
-	if (glutKeyIsDown('a')) {
-		camPos = VectorAdd(camPos, ScalarMult(ortDirX, moveValue));
-	}
-	if (glutKeyIsDown('d')) {
-		camPos = VectorAdd(camPos, ScalarMult(ortDirX, -moveValue));
-	}
-
-	ortDirY = SetVector(0, 0.5, 0);
-	if (glutKeyIsDown('i')) {
-		camPos = VectorAdd(camPos, ScalarMult(ortDirY, moveValue));
-	}
-	if (glutKeyIsDown('o')) {
-		camPos = VectorAdd(camPos, ScalarMult(ortDirY, -moveValue));
-	}
-
-	// Then we create and return the camera coordinates.
-	return getCameraCoord();
-}
 
 void init(void)
 {
@@ -105,10 +47,6 @@ void init(void)
 	glEnable(GL_CULL_FACE);
 	printError("GL inits");
 
-	// Init the camera coordinates
-	camPos = SetVector(10, 2, 0);
-	camDir = SetVector(-1, 0, 0);
-
 	// Load the models.
 	g = new Geometry{ LoadModelPlus("teapot.obj") };
 		
@@ -116,7 +54,6 @@ void init(void)
 	std::vector<GLfloat> startPositions(numInstances * 3);
 	std::vector<GLfloat> endPositions(numInstances * 3);
 	std::vector<GLfloat> startTimes(numInstances);
-
 
 	for (int i = 0; i < numInstances; i++) {
 		startPositions[(i * 3)] = (float)i ;
@@ -134,7 +71,8 @@ void init(void)
 
 void draw() {
 	GLfloat t = (GLfloat)glutGet(GLUT_ELAPSED_TIME);
-	g->draw(t, updateCameraCoord().m, &camPos.x);
+	Camera::handleKeyPress();
+	g->draw(t, Camera::getMatrix().m, &Camera::pos.x);
 }
 
 void display(void)
@@ -170,6 +108,10 @@ int main(int argc, char *argv[])
 #endif
 
 	init();
+	Camera::setDirection(0, 0);
+	glutPassiveMotionFunc(Camera::onMouseMove);
+	glutMouseFunc(Camera::onClick);
+	
 	glutDisplayFunc(display);
 	glutTimerFunc(frameFreq, &OnTimer, 0);
 	glutMainLoop();

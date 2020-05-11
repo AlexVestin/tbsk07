@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="common\GL_utilities.c" />
     <ClCompile Include="common\loadobj.c" />
     <ClCompile Include="common\LoadTGA.c" />
@@ -96,6 +97,7 @@
     <None Include="project.settings" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="common\loadobj.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Mesh.h" />
