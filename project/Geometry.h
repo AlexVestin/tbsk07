@@ -29,8 +29,26 @@ public:
 	void testFunction();
 	void setUpGeometryBuffers();
 	void createShader();
-	void draw(float t, GLfloat* cameraMatrix);
+	void draw(float t, GLfloat* cameraMatrix, GLfloat* camPos);
+	
+	template <typename T = GLfloat>
+	int createBuffer(std::vector<typename T> data, GLuint attribLocation, GLuint elementSize) {
+		GLuint buf;
+		glGenBuffers(1, &buf);
+		glBindBuffer(GL_ARRAY_BUFFER, buf);
+		glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(T), &data[0], GL_STATIC_DRAW);
+
+		glEnableVertexAttribArray(attribLocation);
+		glVertexAttribPointer(attribLocation, elementSize, GL_FLOAT, GL_FALSE, 0, 0);
+		glVertexAttribDivisor(attribLocation, 1);
+		return buf;
+	}
+
 	void setUpInstanceBuffers(std::vector<GLfloat>& startPositions);
+	void setUpInstanceBuffers(std::vector<GLfloat>& startPositions, std::vector<GLfloat>& endPositions);
+	void setUpInstanceBuffers(std::vector<GLfloat>& buf1, std::vector<GLfloat>& buf2, std::vector<GLfloat>& buf3);
+
+
 
 private:
 	std::vector<GLfloat> projectionMatrix;

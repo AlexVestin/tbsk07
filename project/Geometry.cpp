@@ -27,8 +27,6 @@ Geometry::Geometry(const char* modelPath) {
 };
 
 void Geometry::setUpGeometryBuffers() {
-	program = loadShaders("main.vert", "main.frag");
-	glUseProgram(program);
 
 	projectionMatrix = std::vector<GLfloat>(
 		{ 2.0f * near / (right - left), 0.0f, (right + left) / (right - left), 0.0f,
@@ -64,7 +62,8 @@ void Geometry::setUpGeometryBuffers() {
 
 
 void Geometry::createShader() {
-
+	program = loadShaders("main.vert", "main.frag");
+	glUseProgram(program);
 
 	// Light sources and their variables.
 	GLuint lightNo = 2;
@@ -94,32 +93,41 @@ void Geometry::createShader() {
 	glUniform3fv(loc, lightNo, &lightSourcesDirectionsPositions[0].x);
 	glUniform3fv(glGetUniformLocation(program, "lightSourcesColorArr"), lightNo, &lightSourcesColorsArr[0].x);
 
-
 	glUniform1iv(glGetUniformLocation(program, "isDirectional"), lightNo, isDirectional);
 	glUniform1i(glGetUniformLocation(program, "lightSourcesNo"), lightNo);
 }
 
 
 
-void Geometry::draw(float t, GLfloat* camMatrix) {
+void Geometry::draw(float t, GLfloat* camMatrix, GLfloat* camPos) {
 	glUseProgram(program);
 	glBindVertexArray(vao);
 		
 	GLfloat specularExponent[] = { 100.0 };
-
 	// Update unfiforms
 	
 	glUniformMatrix4fv(glGetUniformLocation(program, "camMatrix"), 1, GL_TRUE, camMatrix);
+	glUniform3fv(glGetUniformLocation(program, "camPos"), 1, camPos);
+
 	glUniform1i(glGetUniformLocation(program, "shadingMode"), FLAT_SHADING);
 	mat4 trans = T(0, 0, 0);
 	mat4 rot = Mult(Rx(-M_PI / 2), Rz(t / 2500)); // The teapot object is on the side.
 	glUniformMatrix4fv(glGetUniformLocation(program, "tranMatrix"), 1, GL_TRUE, Mult(trans, rot).m);
 	glUniform1f(glGetUniformLocation(program, "specularExponent"), specularExponent[0]);
-
-
+	glUniform1f(glGetUniformLocation(program, "time"), t / 1000.);
+	
 	glDrawElementsInstanced(GL_TRIANGLES, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
-
 }
+
+
+void Geometry::setUpInstanceBuffers(std::vector<GLfloat>& startPositions, std::vector<GLfloat>& endPositions, std::vector<GLfloat>& startTime) {
+	glBindVertexArray(vao);
+	instanceCount = startPositions.size() / 3;
+	createBuffer(startPositions, 2, 3);
+	createBuffer(endPositions, 3, 3);
+	createBuffer(startTime, 4, 1);
+}
+
 
 void Geometry::setUpInstanceBuffers(std::vector<GLfloat>& startPositions) {
 		

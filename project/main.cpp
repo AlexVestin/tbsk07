@@ -115,14 +115,24 @@ void init(void)
 	// Load the models.
 	g = new Geometry{ LoadModelPlus("teapot.obj") };
 		
-	const int numInstances = 10;
+	const int numInstances = 200;
 	std::vector<GLfloat> startPositions(numInstances * 3);
+	std::vector<GLfloat> endPositions(numInstances * 3);
+	std::vector<GLfloat> startTimes(numInstances);
+
+
 	for (int i = 0; i < numInstances; i++) {
 		startPositions[(i * 3)] = (float)i ;
 		startPositions[(i * 3)+1] = (float)i * 0.0;
 		startPositions[(i * 3)+2] = (float)i ;
+
+		endPositions[(i * 3)] = (float)0;
+		endPositions[(i * 3) + 1] = (float)0;
+		endPositions[(i * 3) + 2] = (float)0;
+
+		startTimes[i] = i / 100;
 	}
-	g->setUpInstanceBuffers(startPositions);
+	g->setUpInstanceBuffers(startPositions, endPositions, startTimes);
 }
 
 void draw() {
@@ -132,7 +142,7 @@ void draw() {
 	// We pass its position (Is needed in the fragment shader).
 	//glUniform3f(glGetUniformLocation(program, "camPos"), camPos.x, camPos.y, camPos.z);
 
-	g->draw(t, updateCameraCoord().m);
+	g->draw(t, updateCameraCoord().m, &camPos.x);
 }
 
 void display(void)
