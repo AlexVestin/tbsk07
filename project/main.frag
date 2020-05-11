@@ -17,6 +17,7 @@ out vec4 out_Color;
 
 void main(void)
 { 
+	out_Color = vec4(1.0, 0.0, 0.0, 1.0);
 	// We normalize the normal vector (just in case).
 	vec3 norm		  = normalize(transNormal);
 	// We have some ambient light in order to simulate general bouncing light

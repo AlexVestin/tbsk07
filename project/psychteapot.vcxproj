@@ -88,7 +88,7 @@
     <ClCompile Include="common\Windows\MicroGlut.c" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Mesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="main.frag" />
@@ -98,8 +98,7 @@
   <ItemGroup>
     <ClInclude Include="common\loadobj.h" />
     <ClInclude Include="Geometry.h" />
-    <ClInclude Include="Header.h" />
-    <ClInclude Include="main.h" />
+    <ClInclude Include="Mesh.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
