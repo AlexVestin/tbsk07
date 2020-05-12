@@ -33,7 +33,7 @@ public:
 	virtual ~Geometry();
 	void setUpGeometryBuffers();
 	void createShader();
-	void draw(float t, GLfloat* tranMatrix, GLfloat* cameraMatrix, GLfloat* camPos, GLuint drawType);
+	void draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos, GLuint drawType);
 	
 	template <typename T = GLfloat>
 	int createBuffer(std::vector<typename T> data, GLuint attribLocation, GLuint elementSize) {

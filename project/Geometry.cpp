@@ -27,7 +27,6 @@ void Geometry::setUpGeometryBuffers() {
 	glBindVertexArray(vao);
 	// Set up buffer objects to copy model data to instance
 	// Vertex buffer
-
 	GLuint vertexLoc = glGetAttribLocation(program, "in_Position");
 	std::cout << "vertexLoc: " << vertexLoc << std::endl;
 	glGenBuffers(1, &vbo);
