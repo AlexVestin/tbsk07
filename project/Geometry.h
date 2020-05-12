@@ -11,7 +11,7 @@
 #include "LoadTGA.h"
 #include <GL/gl.h>
 
-
+class AnimationShader;
 
 struct GeometryAttributeBuffers {
 	int instanceCount;
@@ -25,16 +25,14 @@ struct GeometryAttributeBuffers {
 
 class Geometry {
 public:
-	Geometry(Model* model);
-	Geometry(const char* modelPath);
+	Geometry(Model* model, GLuint program);
+	Geometry(const char* modelPath, GLuint program);
 
 	// Desctructor
 
 	virtual ~Geometry();
-	void testFunction();
 	void setUpGeometryBuffers();
 	void createShader();
-	void assignShader(AnimationShader shader);
 	void draw(float t, GLfloat* cameraMatrix, GLfloat* camPos);
 	
 	template <typename T = GLfloat>
@@ -57,11 +55,15 @@ public:
 
 	GLuint createParticleTexture();
 
+	int		getInstanceCount() { return instanceCount; };
+	GLuint  getVAO() { return vao; };
+	Model*  getModel() { return model; };
+	GLfloat getSpecularExponent() { return specularExp; };
+	GLuint  getTex() { return tex; };
 
 private:
-	int myInt;
 	int instanceCount;
-<<<<<<< HEAD
+	GLuint  tex;
 	GLuint  vao;
 	GLuint  vbo;
 	GLuint  nbo;
@@ -69,14 +71,4 @@ private:
 	GLfloat specularExp;
 	Model*  model;
 	GLuint  program;
-=======
-	GLuint vao;
-	GLuint vbo;
-	GLuint nbo;
-	GLuint ivbo;
-	Model* model;
-	GLuint program;
-	GLuint tex;
-
->>>>>>> d87eb666f34384fed3b2ff626a487d93440c38e6
 };

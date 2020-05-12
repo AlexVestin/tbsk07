@@ -10,29 +10,38 @@
 
 #include <GL/gl.h>
 
+class Geometry;
+
 class AnimationShader
 {
 public:
 	// Constructors
 	AnimationShader();
+	AnimationShader(std::string customCodeSnippet);
 	AnimationShader(
 		GLuint lightNo, 
 		vec3   lightSourcesColorsArr[], 
 		GLint  isDirectional[], 
 		vec3   lightSourcesDirectionsPositions[]
 	);
-
-	// Destructor
-	~AnimationShader() {
-		delete[] lightSourcesColorsArr;
-		delete[] isDirectional;
-		delete[] lightSourcesDirectionsPositions;
-	}
+	AnimationShader(
+		GLuint lightNo,
+		vec3   lightSourcesColorsArr[],
+		GLint  isDirectional[],
+		vec3   lightSourcesDirectionsPositions[],
+		std::string customCodeSnippet
+	);
 
 	// Public methods
 	
+	// Compiles the shader.
+	void load();
+	void load(std::string customCodeSnippet);
+
+	// Sets the shadingMode that we'll use.
 	void setShadingMode(GLint shadingMode);
 
+	// Sets the lightSources for the shader.
 	void setLightSources(
 		GLuint lightNo,
 		vec3   lightSourcesColorsArr[],
@@ -40,7 +49,10 @@ public:
 		vec3   lightSourcesDirectionsPositions[]
 	);
 
-	void draw(Geometry model, float t, GLfloat* camMatrix, GLfloat* camPos);
+	// Draws the given object.
+	void draw(Geometry *model, float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos);
+
+	GLuint getProgram() { return program; };
 
 private:
 	// The type of shading (Flat, Lambert or Phong).
@@ -53,5 +65,10 @@ private:
 	GLint *isDirectional;
 	// Their direction/position.
 	vec3 *lightSourcesDirectionsPositions;
+	// Reference to the shader program.
+	GLuint  program;
+
+	// uploads the light and shadingMode data into the shader.
+	void uploadValues();
 };
 

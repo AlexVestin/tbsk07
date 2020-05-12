@@ -33,6 +33,7 @@
 
 // World objects
 Geometry* g;
+AnimationShader* as;
 float startTime = 0;
 
 void init(void)
@@ -50,8 +51,11 @@ void init(void)
 
 	printError("GL inits");
 
+	// Load the shader.
+	as = new AnimationShader();
+
 	// Load the models.
-	g = new Geometry{ "teapot.obj" };
+	g = new Geometry{ "teapot.obj", as->getProgram() };
 		
 	const int numInstances = 24;
 	std::vector<GLfloat> startPositions(numInstances * 3);
@@ -59,8 +63,6 @@ void init(void)
 	std::vector<GLfloat> startTimes(numInstances);
 	std::vector<GLfloat> sizes(numInstances);
 	std::vector<GLfloat> colors(numInstances*3);
-
-
 		
 	float dist = 24.0;
 	for (int i = 0; i < numInstances; i++) {
@@ -92,13 +94,20 @@ void init(void)
 	buffers.startTimes = startTimes;
 	buffers.sizes = sizes;
 
-
+	// InstanceBuffers should be moved to AnimationShader (?)
 	g->setUpInstanceBuffers(buffers);
 }
 
 void draw() {
 	GLfloat t = (GLfloat)glutGet(GLUT_ELAPSED_TIME);
 	Camera::handleKeyPress();
+	
+	mat4 trans = T(0, 0, 0);
+	mat4 rot = Mult(Rx(-M_PI / 2), Rz(t / 2500)); // The teapot object is on the side.
+	mat4 tot = Mult(trans, rot);
+
+	//as->draw(g, t - startTime, tot.m, Camera::getMatrix().m, &Camera::pos.x);
+	
 	g->draw(t - startTime, Camera::getMatrix().m, &Camera::pos.x);
 }
 

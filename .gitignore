@@ -1,6 +1,6 @@
-.vs/
-.vscode/
-lab3/.vs/
-lab3/Debug/
-project/.vs/
-project/Debug/
+.vs/*
+.vscode/*
+lab3/.vs/*
+lab3/Debug/*
+project/.vs/*
+project/Debug/*
