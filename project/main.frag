@@ -16,7 +16,7 @@ out vec4 out_Color;
 
 void main(void)
 { 
-	out_Color = vec4(1.0, 1.0, 1.0, 1.0);
+	out_Color = col;//vec4(1.0, 1.0, 1.0, 1.0);
 	return;
 	vec4 particleCol = texture(texUnit, gl_PointCoord);
 	out_Color = particleCol;//vec4(1.0, 0.0, 0.0, 1.0);

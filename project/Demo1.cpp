@@ -42,6 +42,8 @@ Geometry* DemoOne() {
 	buffers.endPositions = endPositions;
 	buffers.startTimes = startTimes;
 	buffers.sizes = sizes;
+	buffers.instanceCount = numInstances;
+
 
 	g->setUpInstanceBuffers(buffers);
 	return g;
@@ -86,12 +88,17 @@ Geometry* DemoTwo() {
 	buffers.endPositions = endPositions;
 	buffers.startTimes = startTimes;
 	buffers.sizes = sizes;
+	buffers.instanceCount = numInstances;
+
 
 	g->setUpInstanceBuffers(buffers);
 	return g;
 }
 
-
+float getValue(TextureData* tex, int x, int z, float scale) {
+	if (x < 0 || x > tex->width - 1 || z < 0 || z > tex->height - 1) return 0;
+	return tex->imageData[(x + z * tex->width) * (tex->bpp / 8)] / scale;
+}
 
 
 Geometry* DemoThree() {
@@ -102,25 +109,39 @@ Geometry* DemoThree() {
 	int triangleCount = (width-1)*(height-1) * 2;
 	int x, z;
 
+
+	float heightScale = 10.0;
+	TextureData ttex;
+	LoadTGATextureData("fft-terrain.tga", &ttex);
+
 	std::vector<GLfloat> vertexArray(3 * vertexCount);
 	std::vector<GLfloat> normalArray(3 * vertexCount);
 	std::vector<GLuint> indexArray(3 * triangleCount);
-	
 
 
 	//GLfloat* vertexArray = (GLfloat*)malloc(sizeof(GLfloat) * 3 * vertexCount);
 	//GLuint* indexArray = (GLuint*)malloc(sizeof(GLuint) * triangleCount * 3);
 
-
 	for (x = 0; x < width; x++)
 		for (z = 0; z < height; z++)
 		{
 			// Vertex array. You need to scale this properly
-			float h = ((double)rand() / (RAND_MAX));
-			vertexArray[(x + z * width) * 3 + 0] = x / 40.0;
-			vertexArray[(x + z * width) * 3 + 1] = h;
-			vertexArray[(x + z * width) * 3 + 2] = z / 40.0;
+			float h = getValue(&ttex, x, z, heightScale);
+			vertexArray[(x + z * width) * 3 + 0] = x*3.0;
+			vertexArray[(x + z * width) * 3 + 1] = h* 3.0;
+			vertexArray[(x + z * width) * 3 + 2] = z * 3.0;
 			// Normal vectors. You need to calculate these.
+
+				// https://stackoverflow.com/questions/49640250/calculate-normals-from-heightmap
+			// vec3 normal = vec3(2*(R-L), 2*(B-T), -4).Normalize();
+			float L = getValue(&ttex, x - 1, z, heightScale);
+			float R = getValue(&ttex, x + 1, z, heightScale);
+			float T = getValue(&ttex, x, z - 1, heightScale);
+			float B = getValue(&ttex, x, z + 1, heightScale);
+			vec3 comb = { (float)2. * (R - L), -4 ,2. * (B - T) };
+			vec3 normal = Normalize(comb);
+
+
 		}
 	for (x = 0; x < width - 1; x++)
 		for (z = 0; z < height - 1; z++)

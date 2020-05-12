@@ -144,7 +144,6 @@ void Geometry::setUpInstanceBuffers(GeometryAttributeBuffers& attributes) {
 	glUseProgram(program);
 	glBindVertexArray(vao);
 
-
 	if (!attributes.instanceCount) {
 		throw "Error: instanceCount required";
 	}
