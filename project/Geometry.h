@@ -13,6 +13,16 @@
 
 
 
+struct GeometryAttributeBuffers {
+	int instanceCount;
+	std::vector<GLfloat> startPositions;
+	std::vector<GLfloat> endPositions;
+	std::vector<GLfloat> sizes;
+	std::vector<GLfloat> colors;
+	std::vector<GLfloat> startTimes;
+};
+
+
 class Geometry {
 public:
 	Geometry(Model* model);
@@ -40,9 +50,9 @@ public:
 	}
 
 	void setUpInstanceBuffers(std::vector<GLfloat>& startPositions);
-	void setUpInstanceBuffers(std::vector<GLfloat>& buf1, std::vector<GLfloat>& buf2, std::vector<GLfloat>& buf3);
+	void setUpInstanceBuffers(std::vector<GLfloat>& startPositions, std::vector<GLfloat>& endPositions);
 	// TODO should make an input object instead
-	void setUpInstanceBuffers(std::vector<GLfloat>& buf1, std::vector<GLfloat>& buf2, std::vector<GLfloat>& buf3, std::vector<GLfloat>& buf4, std::vector<GLfloat>& buf5);
+	void setUpInstanceBuffers(GeometryAttributeBuffers& attributeBuffers);
 
 	GLuint createParticleTexture();
 

@@ -135,28 +135,42 @@ GLuint Geometry::createParticleTexture() {
 }
 
 
-void Geometry::setUpInstanceBuffers(
-	std::vector<GLfloat>& startPositions, 
-	std::vector<GLfloat>& endPositions, 
-	std::vector<GLfloat>& startTime,
-	std::vector<GLfloat>& sizes,
-	std::vector<GLfloat>& colors) {
+void Geometry::setUpInstanceBuffers(GeometryAttributeBuffers& attributes) {
 	glBindVertexArray(vao);
-	instanceCount = startPositions.size() / 3;
-	createBuffer(startPositions, glGetAttribLocation(program, "startPos"), 3);
-	createBuffer(endPositions, glGetAttribLocation(program, "endPos"), 3);
-	createBuffer(startTime, glGetAttribLocation(program, "startTime"), 1);
-	createBuffer(sizes, glGetAttribLocation(program, "size"), 1);
-	createBuffer(colors, glGetAttribLocation(program, "inCol"), 3);
 
+	if (attributes.startPositions.empty()) {
+		if (!attributes.instanceCount) {
+			throw "Error, setUpInstanceBuffer requires either startPositions or instanceCount to be used";
+		}
+		instanceCount = attributes.instanceCount;
+	}
+	else {
+		instanceCount = attributes.startPositions.size() / 3;
+		createBuffer(attributes.startPositions, glGetAttribLocation(program, "startPos"), 3);
+	}
+
+	if (!attributes.endPositions.empty()) {
+		createBuffer(attributes.endPositions, glGetAttribLocation(program, "endPos"), 3);
+	}
+
+	if (!attributes.startTimes.empty()) {
+		createBuffer(attributes.startTimes, glGetAttribLocation(program, "startTime"), 3);
+	}
+
+	if (!attributes.sizes.empty()) {
+		createBuffer(attributes.sizes, glGetAttribLocation(program, "size"), 3);
+	}
+
+	if (!attributes.colors.empty()) {
+		createBuffer(attributes.colors, glGetAttribLocation(program, "inCol"), 3);
+	}
 }
 
-void Geometry::setUpInstanceBuffers(std::vector<GLfloat>& startPositions, std::vector<GLfloat>& endPositions, std::vector<GLfloat>& startTime) {
+void Geometry::setUpInstanceBuffers(std::vector<GLfloat>& startPositions, std::vector<GLfloat>& endPositions) {
 	glBindVertexArray(vao);
 	instanceCount = startPositions.size() / 3;
 	createBuffer(startPositions, glGetAttribLocation(program, "startPosition"), 3);
 	createBuffer(endPositions, glGetAttribLocation(program, "endPosition"), 3);
-	createBuffer(startTime, glGetAttribLocation(program, "startTime"), 1);
 }
 
 

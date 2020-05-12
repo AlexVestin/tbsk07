@@ -87,6 +87,12 @@ void main(void)
 	// Before we're done, we multiply the light with the texture.
 	//vec4 tex  = texture(texUnit, texCoord);
 	//out_Color = result * tex;
+	if(length(col) > 0) {
+		out_Color =  col ;
+	} else {
+		out_Color =  particleCol;
+	}
 
-	out_Color =  col ;
+	out_Color =  vec4(1.0, 1.0, 1.0, 1.0);
+	
 }

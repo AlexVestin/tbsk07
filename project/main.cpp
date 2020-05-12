@@ -86,7 +86,14 @@ void init(void)
 
 		startTimes[i] = 0;
 	}
-	g->setUpInstanceBuffers(startPositions, endPositions, startTimes, sizes, colors);
+	GeometryAttributeBuffers buffers;
+	buffers.startPositions = startPositions;
+	buffers.endPositions = endPositions;
+	buffers.startTimes = startTimes;
+	buffers.sizes = sizes;
+
+
+	g->setUpInstanceBuffers(buffers);
 }
 
 void draw() {
