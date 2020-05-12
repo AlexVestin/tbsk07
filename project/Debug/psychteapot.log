@@ -1,11 +1,55 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(467,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (psychteapot.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  MicroGlut.c
+  Geometry.cpp
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(71,49): warning C4190: 'SetVector' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(73,32): warning C4190: 'VectorSub' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(74,32): warning C4190: 'VectorAdd' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(75,35): warning C4190: 'CrossProduct' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(77,36): warning C4190: 'ScalarMult' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(79,24): warning C4190: 'Normalize' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(80,47): warning C4190: 'CalcNormalVector' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(97,31): warning C4190: 'MultVec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(98,31): warning C4190: 'MultVec4' has C-linkage specified, but returns UDT 'vec4' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(46): message : see declaration of 'vec4'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(103,35): warning C4190: 'MultMat3Vec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(136,25): warning C4190: 'vec4tovec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(137,25): warning C4190: 'vec3tovec4' has C-linkage specified, but returns UDT 'vec4' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(46): message : see declaration of 'vec4'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(174,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(174,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(174,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(180,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(180,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(180,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(186,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(186,24): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(186,17): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(237,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(237,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(237,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(237,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(243,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(243,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(243,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(243,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(249,38): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(249,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(249,24): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(249,17): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
 C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.h(101,1): warning C4005: 'GLUT_KEY_SPACE': macro redefinition
 C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.h(95): message : see previous definition of 'GLUT_KEY_SPACE'
-C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.c(218,1): warning C4133: 'function': incompatible types - from 'char [9]' to 'LPCWSTR'
-C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.c(372,46): warning C4047: 'function': 'LPWORD' differs in levels of indirection from 'unsigned char (*)[2]'
-C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.c(372,46): warning C4024: 'ToAsciiEx': different types for formal and actual parameter 4
-C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.c(542,31): warning C4133: '=': incompatible types - from 'char [9]' to 'LPCWSTR'
-C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.c(545,6): warning C4013: 'main' undefined; assuming extern returning int
-C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.c(723,6): warning C4101: 'windowHDC': unreferenced local variable
+C:\Users\alex\prog\tsbk07\project\Camera.h(25,2): warning C4305: 'initializing': truncation from 'double' to 'const GLfloat'
+C:\Users\alex\prog\tsbk07\project\Camera.h(31,14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Geometry.cpp(30,6): warning C4101: 'i': unreferenced local variable
+C:\Users\alex\prog\tsbk07\project\Geometry.cpp(110,30): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\alex\prog\tsbk07\project\Geometry.cpp(113,55): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
   psychteapot.vcxproj -> C:\Users\alex\prog\tsbk07\project\Debug\project.exe

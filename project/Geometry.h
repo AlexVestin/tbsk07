@@ -1,21 +1,16 @@
 #pragma once
 #include <iostream>
+#include "Camera.h"
 #include <string>
 #include <loadobj.h>
 #include "VectorUtils3.h"
 #include <vector>
 #include "glew.h"
 #include "GL_utilities.h"
+#include "LoadTGA.h"
 
 #include <GL/gl.h>
 
-
-#define near 1.0
-#define far 300.0
-#define right 0.5
-#define left -0.5
-#define top 0.5
-#define bottom -0.5
 
 
 class Geometry {
@@ -45,13 +40,14 @@ public:
 	}
 
 	void setUpInstanceBuffers(std::vector<GLfloat>& startPositions);
-	void setUpInstanceBuffers(std::vector<GLfloat>& startPositions, std::vector<GLfloat>& endPositions);
 	void setUpInstanceBuffers(std::vector<GLfloat>& buf1, std::vector<GLfloat>& buf2, std::vector<GLfloat>& buf3);
+	// TODO should make an input object instead
+	void setUpInstanceBuffers(std::vector<GLfloat>& buf1, std::vector<GLfloat>& buf2, std::vector<GLfloat>& buf3, std::vector<GLfloat>& buf4, std::vector<GLfloat>& buf5);
 
+	GLuint createParticleTexture();
 
 
 private:
-	std::vector<GLfloat> projectionMatrix;
 	int myInt;
 	int instanceCount;
 	GLuint vao;
@@ -60,4 +56,6 @@ private:
 	GLuint ivbo;
 	Model* model;
 	GLuint program;
+	GLuint tex;
+
 };

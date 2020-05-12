@@ -12,6 +12,10 @@ float Camera::pitch = -30;
 float Camera::yaw = -90.0;
 
 
+
+
+
+
 mat4 Camera::getMatrix() {
 	return lookAt(
 		pos.x, pos.y, pos.z, 
@@ -73,24 +77,23 @@ void Camera::handleKeyPress() {
 	}
 
 	if (glutKeyIsDown('a')) {
-		vec3 left;
-		left.x = cosf(toRad(yaw - 90)) * cosf(toRad(pitch));
-		left.y = sinf(toRad(pitch));
-		left.z = sinf(toRad(yaw - 90)) * cosf(toRad(pitch));
-		pos.x += mv * left.x;
+		vec3 leftVec;
+		leftVec.x = cosf(toRad(yaw - 90)) * cosf(toRad(pitch));
+		leftVec.y = sinf(toRad(pitch));
+		leftVec.z = sinf(toRad(yaw - 90)) * cosf(toRad(pitch));
+		pos.x += mv * leftVec.x;
 		//pos.y += mv * left.y;
-		pos.z += mv * left.z;
+		pos.z += mv * leftVec.z;
 	}
 
 	if (glutKeyIsDown('d')) {
-		vec3 right;
-		right.x = cosf(toRad(yaw + 90)) * cosf(toRad(pitch));
-		right.y = sinf(toRad(pitch));
-		right.z = sinf(toRad(yaw + 90)) * cosf(toRad(pitch));
-		pos.x += mv * right.x;
-
+		vec3 rightVec;
+		rightVec.x = cosf(toRad(yaw + 90)) * cosf(toRad(pitch));
+		//rightVec.y = sinf(toRad(pitch));
+		rightVec.z = sinf(toRad(yaw + 90)) * cosf(toRad(pitch));
+		pos.x += mv * rightVec.x;
 		//pos.y += mv * right.y;
-		pos.z += mv * right.z;
+		pos.z += mv * rightVec.z;
 	}
 
 	if (glutKeyIsDown('w')) {

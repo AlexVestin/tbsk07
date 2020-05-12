@@ -13,13 +13,11 @@
 	// uses framework Cocoa
 #endif
 
-
 #include "MicroGlut.h"
 #if defined(_WIN32)
 #include "glew.h"
 #endif
 #include <GL/gl.h>
-
 
 #include "GL_utilities.h"
 #include "VectorUtils3.h"
@@ -35,7 +33,7 @@
 
 // World objects
 Geometry* g;
-
+float startTime = 0;
 
 void init(void)
 {
@@ -43,36 +41,58 @@ void init(void)
 
 	// GL inits
 	glClearColor(0.0, 0.0, 0.0, 0);
-	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
+	glEnable(GL_PROGRAM_POINT_SIZE);
+	glEnable(GL_POINT_SPRITE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	printError("GL inits");
 
 	// Load the models.
-	g = new Geometry{ LoadModelPlus("teapot.obj") };
+	g = new Geometry{ "teapot.obj" };
 		
-	const int numInstances = 200;
+	const int numInstances = 24;
 	std::vector<GLfloat> startPositions(numInstances * 3);
 	std::vector<GLfloat> endPositions(numInstances * 3);
 	std::vector<GLfloat> startTimes(numInstances);
+	std::vector<GLfloat> sizes(numInstances);
+	std::vector<GLfloat> colors(numInstances*3);
 
+
+		
+	float dist = 24.0;
 	for (int i = 0; i < numInstances; i++) {
-		startPositions[(i * 3)] = (float)i ;
-		startPositions[(i * 3)+1] = (float)i * 0.0;
-		startPositions[(i * 3)+2] = (float)i ;
+		float rx = ((double)rand() / (RAND_MAX));
+		float ry = ((double)rand() / (RAND_MAX));
+		float rz = ((double)rand() / (RAND_MAX));
+
+		startPositions[(i * 3)] = (float) rx* dist;
+		startPositions[(i * 3)+1] = (float)ry * dist;
+		startPositions[(i * 3)+2] = (float)rz * dist;
 
 		endPositions[(i * 3)] = (float)0;
 		endPositions[(i * 3) + 1] = (float)0;
 		endPositions[(i * 3) + 2] = (float)0;
 
-		startTimes[i] = i / 100;
+		sizes[i] = (rx + 1.0) ;
+
+		colors[(i * 3)] = (rx + 1.0) / 2.5;
+		colors[(i * 3) + 1] = (ry + 1.0) / 2.5;
+		colors[(i * 3) + 2] = (rz + 1.0) / 2.5;
+		//colors[(i * 3) + 3] =((double)rand() / (RAND_MAX)) + 1;
+
+
+		startTimes[i] = 0;
 	}
-	g->setUpInstanceBuffers(startPositions, endPositions, startTimes);
+	g->setUpInstanceBuffers(startPositions, endPositions, startTimes, sizes, colors);
 }
 
 void draw() {
 	GLfloat t = (GLfloat)glutGet(GLUT_ELAPSED_TIME);
 	Camera::handleKeyPress();
-	g->draw(t, Camera::getMatrix().m, &Camera::pos.x);
+	g->draw(t - startTime, Camera::getMatrix().m, &Camera::pos.x);
 }
 
 void display(void)
@@ -101,12 +121,13 @@ int main(int argc, char *argv[])
 	glutInit(&argc, argv);
 	glutInitContextVersion(3, 2);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
-	glutInitWindowSize(768, 768);
+	glutInitWindowSize(1280, 720);
 	glutCreateWindow("GL3 multiple objects example");
 #ifdef WIN32
 	glewInit();
 #endif
 
+	startTime = (GLfloat)glutGet(GLUT_ELAPSED_TIME);
 	init();
 	Camera::setDirection(0, 0);
 	glutPassiveMotionFunc(Camera::onMouseMove);

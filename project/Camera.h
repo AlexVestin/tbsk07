@@ -3,6 +3,13 @@
 #include "MicroGlut.h"
 #include <iostream>
 
+#define near 1.0
+#define far 300.0
+#define right 0.5
+#define left -0.5
+#define top 0.5
+#define bottom -0.5
+
 class Camera {
 public:
 
@@ -10,7 +17,13 @@ public:
 	static void onClick(int, int, int x, int y);
 	static void handleKeyPress();
 	static void setDirection(int x, int y);
-	static void Init();
+	static constexpr GLfloat projectionMatrix[16] = {
+		2.0f * near / (right - left), 0.0f, (right + left) / (right - left), 0.0f,
+		0.0f, 2.0f * near / (top - bottom), (top + bottom) / (top - bottom), 0.0f,
+		0.0f, 0.0f, -(far + near) / (far - near), -2 * far * near / (far - near),
+		0.0f, 0.0f, -1.0f, 0.0f 
+	};
+	
 
 	static mat4 getMatrix();
 
