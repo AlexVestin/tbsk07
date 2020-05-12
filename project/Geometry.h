@@ -12,7 +12,7 @@
 #include <GL/gl.h>
 
 
-
+class AnimationShader;
 struct GeometryAttributeBuffers {
 	int instanceCount;
 	std::vector<GLfloat> startPositions;
@@ -61,7 +61,7 @@ public:
 private:
 	int myInt;
 	int instanceCount;
-<<<<<<< HEAD
+
 	GLuint  vao;
 	GLuint  vbo;
 	GLuint  nbo;
@@ -69,14 +69,5 @@ private:
 	GLfloat specularExp;
 	Model*  model;
 	GLuint  program;
-=======
-	GLuint vao;
-	GLuint vbo;
-	GLuint nbo;
-	GLuint ivbo;
-	Model* model;
-	GLuint program;
 	GLuint tex;
-
->>>>>>> d87eb666f34384fed3b2ff626a487d93440c38e6
 };

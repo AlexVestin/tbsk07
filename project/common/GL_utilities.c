@@ -223,8 +223,6 @@ void printError(const char *functionName)
        }
    }
 }
-
-
 /*
 
 // Keymap mini manager

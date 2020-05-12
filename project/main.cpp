@@ -24,7 +24,9 @@
 #include <math.h>
 #include <loadobj.h>
 #include <LoadTGA.h>
-#include "Geometry.h"
+
+
+#include "Demos.h"
 #include "Camera.h"
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -32,13 +34,14 @@
 #define frameFreq 20
 
 // World objects
-Geometry* g;
+
+std::vector<Geometry*> demos;
+
 float startTime = 0;
 
 void init(void)
 {
 	dumpInfo();
-
 	// GL inits
 	glClearColor(0.0, 0.0, 0.0, 0);
 	glDisable(GL_DEPTH_TEST);
@@ -49,57 +52,20 @@ void init(void)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	printError("GL inits");
-
 	// Load the models.
-	g = new Geometry{ "teapot.obj" };
-		
-	const int numInstances = 24;
-	std::vector<GLfloat> startPositions(numInstances * 3);
-	std::vector<GLfloat> endPositions(numInstances * 3);
-	std::vector<GLfloat> startTimes(numInstances);
-	std::vector<GLfloat> sizes(numInstances);
-	std::vector<GLfloat> colors(numInstances*3);
+	demos.push_back(DemoTwo());
+	demos.push_back(DemoOne());
+	demos.push_back(DemoThree());
 
-
-		
-	float dist = 24.0;
-	for (int i = 0; i < numInstances; i++) {
-		float rx = ((double)rand() / (RAND_MAX));
-		float ry = ((double)rand() / (RAND_MAX));
-		float rz = ((double)rand() / (RAND_MAX));
-
-		startPositions[(i * 3)] = (float) rx* dist;
-		startPositions[(i * 3)+1] = (float)ry * dist;
-		startPositions[(i * 3)+2] = (float)rz * dist;
-
-		endPositions[(i * 3)] = (float)0;
-		endPositions[(i * 3) + 1] = (float)0;
-		endPositions[(i * 3) + 2] = (float)0;
-
-		sizes[i] = (rx + 1.0) ;
-
-		colors[(i * 3)] = (rx + 1.0) / 2.5;
-		colors[(i * 3) + 1] = (ry + 1.0) / 2.5;
-		colors[(i * 3) + 2] = (rz + 1.0) / 2.5;
-		//colors[(i * 3) + 3] =((double)rand() / (RAND_MAX)) + 1;
-
-
-		startTimes[i] = 0;
-	}
-	GeometryAttributeBuffers buffers;
-	buffers.startPositions = startPositions;
-	buffers.endPositions = endPositions;
-	buffers.startTimes = startTimes;
-	buffers.sizes = sizes;
-
-
-	g->setUpInstanceBuffers(buffers);
 }
 
 void draw() {
 	GLfloat t = (GLfloat)glutGet(GLUT_ELAPSED_TIME);
 	Camera::handleKeyPress();
-	g->draw(t - startTime, Camera::getMatrix().m, &Camera::pos.x);
+	int index = (int)(t / 10000.) % demos.size();
+	//std::cout << "drw: " << index << std::endl;
+
+	demos[index]->draw(t - startTime, Camera::getMatrix().m, &Camera::pos.x);
 }
 
 void display(void)
