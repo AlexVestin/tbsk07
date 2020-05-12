@@ -68,6 +68,10 @@ void draw() {
 	mat4 tot = Mult(trans, rot);
 	demos[index]->draw(t - startTime, Camera::getMatrix().m, &Camera::pos.x, &tot.m);
 
+	//as->draw(g, t - startTime, tot.m, Camera::getMatrix().m, &Camera::pos.x);
+	
+	g->draw(t - startTime, tot.m, Camera::getMatrix().m, &Camera::pos.x);
+
 }
 
 void display(void)

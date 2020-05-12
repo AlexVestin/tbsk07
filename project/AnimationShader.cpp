@@ -79,6 +79,7 @@ void AnimationShader::draw(Geometry *geom, float t, GLfloat* tranMatrix, GLfloat
 	glDrawElementsInstanced(GL_POINTS, geom->getModel()->numIndices, GL_UNSIGNED_INT, 0L, geom->getInstanceCount());
 }
 */
+
 void AnimationShader::load() {
 	program = loadShaders("main.vert", "main.frag");
 	glUseProgram(program);

@@ -92,29 +92,36 @@ void Geometry::createShader() {
 	glUniform1i(glGetUniformLocation(program, "lightSourcesNo"), lightNo);
 }
 */
-void Geometry::draw(float t, GLfloat* camMatrix, GLfloat* camPos) {
+
+void Geometry::draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos, int drawType) {
 	glUseProgram(program);
 	glBindVertexArray(vao);
-		
+	
+	// Upload and enable the texture.
+	glUniform1i(glGetUniformLocation(program, "texUnit"), 0); // Texture unit 0
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, tex);
 
-	// Update unfiforms
+	// Update uniforms
 	// We pass a camera (view) matrix.
 	glUniformMatrix4fv(glGetUniformLocation(program, "camMatrix"), 1, GL_TRUE, camMatrix);
 
 	// We pass its position (Is needed in the fragment shader).
 	glUniform3fv(glGetUniformLocation(program, "camPos"), 1, camPos);
 
-	mat4 trans = T(0, 0, 0);
-	mat4 rot = Mult(Rx(-M_PI / 2), Rz(t / 2500)); // The teapot object is on the side.
-	glUniformMatrix4fv(glGetUniformLocation(program, "tranMatrix"), 1, GL_TRUE, Mult(trans, rot).m);
+	//mat4 trans = T(0, 0, 0);
+	//mat4 rot = Mult(Rx(-M_PI / 2), Rz(t / 2500)); // The teapot object is on the side.
+	glUniformMatrix4fv(glGetUniformLocation(program, "tranMatrix"), 1, GL_TRUE, tranMatrix);
 	
 	glUniform1f(glGetUniformLocation(program, "specularExponent"), specularExp);
 	glUniform1f(glGetUniformLocation(program, "time"), t / 1000.);
 
 	glDepthMask(false);
-	glDrawElementsInstanced(GL_POINTS, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
+
+	if(drawType == 0)
+		glDrawElementsInstanced(GL_POINTS, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
+	else if(drawType == 1)
+		DrawModel(model, program, "in_Position", "in_Normal", "inTexCoord");
 }
 
 
@@ -129,8 +136,8 @@ GLuint Geometry::createParticleTexture() {
 	writable[path.size()] = '\0'; // don't forget the terminat
 	LoadTGATextureSimple(writable, &tex);
 	
-	glUseProgram(program);
-	glUniform1i(glGetUniformLocation(program, "texUnit"), 0); // Texture unit 0
+	//glUseProgram(program);
+	//glUniform1i(glGetUniformLocation(program, "texUnit"), 0); // Texture unit 0
 	return tex;
 }
 

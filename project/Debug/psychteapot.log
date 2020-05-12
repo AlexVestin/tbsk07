@@ -1,0 +1,184 @@
+﻿  AnimationShader.cpp
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(71,49): warning C4190: 'SetVector' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(73,32): warning C4190: 'VectorSub' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(74,32): warning C4190: 'VectorAdd' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(75,35): warning C4190: 'CrossProduct' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(77,36): warning C4190: 'ScalarMult' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(79,24): warning C4190: 'Normalize' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(80,47): warning C4190: 'CalcNormalVector' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(97,31): warning C4190: 'MultVec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(98,31): warning C4190: 'MultVec4' has C-linkage specified, but returns UDT 'vec4' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(46): message : see declaration of 'vec4'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(103,35): warning C4190: 'MultMat3Vec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(136,25): warning C4190: 'vec4tovec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(137,25): warning C4190: 'vec3tovec4' has C-linkage specified, but returns UDT 'vec4' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(46): message : see declaration of 'vec4'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(174,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(174,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(174,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(180,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(180,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(180,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(186,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(186,24): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(186,17): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(237,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(237,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(237,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(237,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(243,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(243,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(243,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(243,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(249,38): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(249,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(249,24): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(249,17): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\Windows\MicroGlut.h(101,1): warning C4005: 'GLUT_KEY_SPACE': macro redefinition
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\Windows\MicroGlut.h(95): message : see previous definition of 'GLUT_KEY_SPACE'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\Camera.h(25,2): warning C4305: 'initializing': truncation from 'double' to 'const GLfloat'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\Camera.h(31,14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Geometry.cpp
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(71,49): warning C4190: 'SetVector' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(73,32): warning C4190: 'VectorSub' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(74,32): warning C4190: 'VectorAdd' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(75,35): warning C4190: 'CrossProduct' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(77,36): warning C4190: 'ScalarMult' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(79,24): warning C4190: 'Normalize' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(80,47): warning C4190: 'CalcNormalVector' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(97,31): warning C4190: 'MultVec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(98,31): warning C4190: 'MultVec4' has C-linkage specified, but returns UDT 'vec4' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(46): message : see declaration of 'vec4'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(103,35): warning C4190: 'MultMat3Vec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(136,25): warning C4190: 'vec4tovec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(137,25): warning C4190: 'vec3tovec4' has C-linkage specified, but returns UDT 'vec4' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(46): message : see declaration of 'vec4'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(174,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(174,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(174,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(180,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(180,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(180,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(186,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(186,24): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(186,17): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(237,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(237,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(237,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(237,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(243,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(243,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(243,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(243,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(249,38): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(249,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(249,24): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(249,17): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\Windows\MicroGlut.h(101,1): warning C4005: 'GLUT_KEY_SPACE': macro redefinition
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\Windows\MicroGlut.h(95): message : see previous definition of 'GLUT_KEY_SPACE'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\Camera.h(25,2): warning C4305: 'initializing': truncation from 'double' to 'const GLfloat'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\Camera.h(31,14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\Geometry.cpp(26,6): warning C4101: 'i': unreferenced local variable
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\Geometry.cpp(113,55): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  main.cpp
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\Windows\MicroGlut.h(101,1): warning C4005: 'GLUT_KEY_SPACE': macro redefinition
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\Windows\MicroGlut.h(95): message : see previous definition of 'GLUT_KEY_SPACE'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(71,49): warning C4190: 'SetVector' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(73,32): warning C4190: 'VectorSub' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(74,32): warning C4190: 'VectorAdd' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(75,35): warning C4190: 'CrossProduct' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(77,36): warning C4190: 'ScalarMult' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(79,24): warning C4190: 'Normalize' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(80,47): warning C4190: 'CalcNormalVector' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(97,31): warning C4190: 'MultVec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(98,31): warning C4190: 'MultVec4' has C-linkage specified, but returns UDT 'vec4' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(46): message : see declaration of 'vec4'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(103,35): warning C4190: 'MultMat3Vec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(136,25): warning C4190: 'vec4tovec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(137,25): warning C4190: 'vec3tovec4' has C-linkage specified, but returns UDT 'vec4' which is incompatible with C
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(46): message : see declaration of 'vec4'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(174,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(174,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(174,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(180,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(180,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(180,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(186,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(186,24): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(186,17): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(237,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(237,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(237,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(237,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(243,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(243,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(243,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(243,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(249,38): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(249,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(249,24): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\common\VectorUtils3.h(249,17): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\Camera.h(6,1): warning C4005: 'near': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(95): message : see previous definition of 'near'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\Camera.h(7,1): warning C4005: 'far': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(94): message : see previous definition of 'far'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\Camera.h(25,2): warning C4305: 'initializing': truncation from 'double' to 'const GLfloat'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\Camera.h(31,14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\main.cpp(69,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\main.cpp(70,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\main.cpp(71,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\main.cpp(81,18): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\main.cpp(83,32): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\main.cpp(84,36): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\main.cpp(85,36): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\main.cpp(106,30): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\main.cpp(134,2): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\main.cpp(135,2): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Generating Code...
+  psychteapot.vcxproj -> C:\Users\avgru\VisualStudioProjects\tsbk07-alex\tbsk07\project\Debug\project.exe
