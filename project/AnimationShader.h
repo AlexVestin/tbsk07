@@ -9,6 +9,7 @@
 #include "GL_utilities.h"
 
 #include <GL/gl.h>
+class Geometry;
 
 class Geometry;
 

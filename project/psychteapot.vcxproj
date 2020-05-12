@@ -87,6 +87,7 @@
     <ClCompile Include="common\VectorUtils3.c" />
     <ClCompile Include="common\Windows\glew.c" />
     <ClCompile Include="common\Windows\MicroGlut.c" />
+    <ClCompile Include="Demo1.cpp" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
@@ -100,6 +101,7 @@
     <ClInclude Include="AnimationShader.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="common\loadobj.h" />
+    <ClInclude Include="Demos.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Mesh.h" />
   </ItemGroup>

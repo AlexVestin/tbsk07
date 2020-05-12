@@ -11,6 +11,7 @@
 #include "LoadTGA.h"
 #include <GL/gl.h>
 
+
 class AnimationShader;
 
 struct GeometryAttributeBuffers {
@@ -63,6 +64,7 @@ public:
 
 private:
 	int instanceCount;
+
 	GLuint  tex;
 	GLuint  vao;
 	GLuint  vbo;
@@ -71,4 +73,5 @@ private:
 	GLfloat specularExp;
 	Model*  model;
 	GLuint  program;
+
 };
