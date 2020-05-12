@@ -4,7 +4,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 Geometry* DemoOne() {
-	Geometry* g = new Geometry{ "teapot.obj" };
+	AnimationShader* as = new AnimationShader();
+	Geometry* g = new Geometry{ "teapot.obj", as->getProgram() };
 
 	const int numInstances = 24;
 	std::vector<GLfloat> startPositions(numInstances * 3);
@@ -33,8 +34,6 @@ Geometry* DemoOne() {
 		colors[(i * 3) + 1] = (ry + 1.0) / 2.5;
 		colors[(i * 3) + 2] = (rz + 1.0) / 2.5;
 		//colors[(i * 3) + 3] =((double)rand() / (RAND_MAX)) + 1;
-
-
 		startTimes[i] = 0;
 	}
 	GeometryAttributeBuffers buffers;
@@ -49,7 +48,8 @@ Geometry* DemoOne() {
 
 
 Geometry* DemoTwo() {
-	Geometry* g = new Geometry{ "bunny.obj" };
+  AnimationShader* as = new AnimationShader();
+	Geometry* g = new Geometry{ "bunny.obj", as->getProgram() };
 
 	const int numInstances = 200;
 	std::vector<GLfloat> startPositions(numInstances * 3);
@@ -147,12 +147,14 @@ Geometry* DemoThree() {
 		NULL,
 		&indexArray[0],
 		vertexCount,
-		triangleCount * 3);
+		triangleCount
+    );
 
 
 	std::cout << "model loaded" << std::endl;
+    AnimationShader* as = new AnimationShader();
 
-	Geometry* g = new Geometry{ model };
+	Geometry* g = new Geometry{ model, as->getProgram() };
 
 	const int numInstances = 200;
 	std::vector<GLfloat> startPositions(numInstances * 3);

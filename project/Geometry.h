@@ -13,6 +13,7 @@
 
 
 class AnimationShader;
+
 struct GeometryAttributeBuffers {
 	int instanceCount;
 	std::vector<GLfloat> startPositions;
@@ -25,16 +26,14 @@ struct GeometryAttributeBuffers {
 
 class Geometry {
 public:
-	Geometry(Model* model);
-	Geometry(const char* modelPath);
+	Geometry(Model* model, GLuint program);
+	Geometry(const char* modelPath, GLuint program);
 
 	// Desctructor
 
 	virtual ~Geometry();
-	void testFunction();
 	void setUpGeometryBuffers();
 	void createShader();
-	void assignShader(AnimationShader shader);
 	void draw(float t, GLfloat* cameraMatrix, GLfloat* camPos);
 	
 	template <typename T = GLfloat>
@@ -57,11 +56,16 @@ public:
 
 	GLuint createParticleTexture();
 
+	int		getInstanceCount() { return instanceCount; };
+	GLuint  getVAO() { return vao; };
+	Model*  getModel() { return model; };
+	GLfloat getSpecularExponent() { return specularExp; };
+	GLuint  getTex() { return tex; };
 
 private:
-	int myInt;
 	int instanceCount;
 
+	GLuint  tex;
 	GLuint  vao;
 	GLuint  vbo;
 	GLuint  nbo;
@@ -69,5 +73,5 @@ private:
 	GLfloat specularExp;
 	Model*  model;
 	GLuint  program;
-	GLuint tex;
+
 };

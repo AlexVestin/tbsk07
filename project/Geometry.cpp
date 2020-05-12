@@ -1,32 +1,28 @@
 #pragma once
 #include "Geometry.h"
 
-#define FLAT_SHADING 0
-#define LAMBERT_SHADING 1
-#define PHONG_SHADING 2
+#define DEFAULT_SPEC_EXP 100.0f
 
 // Useful if loaded using LoadModelFromXXX
-Geometry::Geometry(Model* model) : model(model) {
-	createShader();
-
+Geometry::Geometry(Model* model, GLuint program) : model(model) {
+	this->program = program;
 	glGenVertexArrays(1, &vao);
 	setUpGeometryBuffers();
+	specularExp = DEFAULT_SPEC_EXP;
+	//createShader();
 };
 
-
-Geometry::Geometry(const char* modelPath) {
-	model = LoadModelPlus(modelPath);
-	createShader();
-
+Geometry::Geometry(const char* modelPath, GLuint program) {
+	model		  = LoadModelPlus(modelPath);
+	this->program = program;
 	glGenVertexArrays(1, &vao);
 	setUpGeometryBuffers();
+	specularExp = DEFAULT_SPEC_EXP;
+	//createShader();
 	tex = createParticleTexture();
 };
 
 void Geometry::setUpGeometryBuffers() {
-
-
-	glUseProgram(program);
 	int i;
 	glBindVertexArray(vao);
 	// Set up buffer objects to copy model data to instance
@@ -57,7 +53,7 @@ void Geometry::setUpGeometryBuffers() {
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, model->numIndices * sizeof(GLuint), model->indexArray, GL_STATIC_DRAW);
 }
 
-
+/*
 void Geometry::createShader() {
 	program = loadShaders("main.vert", "main.frag");
 	glUseProgram(program);
@@ -85,7 +81,6 @@ void Geometry::createShader() {
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, tex);
 
-
 	glUniformMatrix4fv(glGetUniformLocation(program, "projMatrix"), 1, GL_TRUE, &Camera::projectionMatrix[0]);
 		
 	// Upload light data
@@ -97,16 +92,14 @@ void Geometry::createShader() {
 	glUniform1iv(glGetUniformLocation(program, "isDirectional"), lightNo, isDirectional);
 	glUniform1i(glGetUniformLocation(program, "lightSourcesNo"), lightNo);
 }
-
-void Geometry::assignShader(AnimationShader shader) {
-
-}
-
+*/
 void Geometry::draw(float t, GLfloat* camMatrix, GLfloat* camPos) {
 	glUseProgram(program);
 	glBindVertexArray(vao);
 		
-	GLfloat specularExponent[] = { 100.0 };
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, tex);
+
 	// Update unfiforms
 	// We pass a camera (view) matrix.
 	glUniformMatrix4fv(glGetUniformLocation(program, "camMatrix"), 1, GL_TRUE, camMatrix);
@@ -114,17 +107,16 @@ void Geometry::draw(float t, GLfloat* camMatrix, GLfloat* camPos) {
 	// We pass its position (Is needed in the fragment shader).
 	glUniform3fv(glGetUniformLocation(program, "camPos"), 1, camPos);
 
-	glUniform1i(glGetUniformLocation(program, "shadingMode"), FLAT_SHADING);
 	mat4 trans = T(0, 0, 0);
 	mat4 rot = Mult(Rx(-M_PI / 2), Rz(t / 2500)); // The teapot object is on the side.
 	glUniformMatrix4fv(glGetUniformLocation(program, "tranMatrix"), 1, GL_TRUE, Mult(trans, rot).m);
-	glUniform1f(glGetUniformLocation(program, "specularExponent"), specularExponent[0]);
+	
+	glUniform1f(glGetUniformLocation(program, "specularExponent"), specularExp);
 	glUniform1f(glGetUniformLocation(program, "time"), t / 1000.);
 
-	glDisable(GL_DEPTH_WRITEMASK);
+	glDepthMask(false);
 	glDrawElementsInstanced(GL_POINTS, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
 }
-
 
 
 GLuint Geometry::createParticleTexture() {
@@ -143,8 +135,8 @@ GLuint Geometry::createParticleTexture() {
 	return tex;
 }
 
-
 void Geometry::setUpInstanceBuffers(GeometryAttributeBuffers& attributes) {
+	glUseProgram(program);
 	glBindVertexArray(vao);
 
 	if (attributes.startPositions.empty()) {
@@ -176,6 +168,7 @@ void Geometry::setUpInstanceBuffers(GeometryAttributeBuffers& attributes) {
 }
 
 void Geometry::setUpInstanceBuffers(std::vector<GLfloat>& startPositions, std::vector<GLfloat>& endPositions) {
+	glUseProgram(program);
 	glBindVertexArray(vao);
 	instanceCount = startPositions.size() / 3;
 	createBuffer(startPositions, glGetAttribLocation(program, "startPosition"), 3);
@@ -188,13 +181,8 @@ void Geometry::setUpInstanceBuffers(std::vector<GLfloat>& startPositions) {
 	createBuffer(startPositions, 2, 3);
 }
 
-
 // Destructor, todo cleanup
 Geometry::~Geometry() {
 	std::cout << "Bye!" << std::endl;
-}
-
-void Geometry::testFunction() {
-	std::cout << myInt << std::endl;
 }
 

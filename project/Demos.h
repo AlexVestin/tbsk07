@@ -8,7 +8,7 @@
 #include <GL/gl.h>
 #include "GL_utilities.h"
 #include <math.h>
-
+#include "AnimationShader.h"
 
 Geometry* DemoOne();
 Geometry* DemoTwo();

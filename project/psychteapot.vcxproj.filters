@@ -48,9 +48,12 @@
     <ClCompile Include="AnimationShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Demo1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+>>>>>>> 311098ea5dba7d49bee0a0f68105f6a9c17d702a
   </ItemGroup>
   <ItemGroup>
     <None Include="project.settings" />
@@ -71,10 +74,14 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AnimationShader.h">
+<<<<<<< HEAD
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Demos.h">
       <Filter>Source Files</Filter>
+=======
+      <Filter>Header Files</Filter>
+>>>>>>> 311098ea5dba7d49bee0a0f68105f6a9c17d702a
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

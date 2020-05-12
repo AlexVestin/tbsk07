@@ -36,7 +36,7 @@
 // World objects
 
 std::vector<Geometry*> demos;
-
+AnimationShader* as;
 float startTime = 0;
 
 void init(void)
@@ -53,19 +53,22 @@ void init(void)
 
 	printError("GL inits");
 	// Load the models.
-	demos.push_back(DemoTwo());
+ 
 	demos.push_back(DemoOne());
-	demos.push_back(DemoThree());
-
+	demos.push_back(DemoTwo());
+	//demos.push_back(DemoThree());
 }
 
 void draw() {
 	GLfloat t = (GLfloat)glutGet(GLUT_ELAPSED_TIME);
 	Camera::handleKeyPress();
 	int index = (int)(t / 10000.) % demos.size();
-	//std::cout << "drw: " << index << std::endl;
+	
+	mat4 trans = T(0, 0, 0);
+	mat4 rot = Mult(Rx(-M_PI / 2), Rz(t / 2500)); // The teapot object is on the side.
+	mat4 tot = Mult(trans, rot);
+  demos[index]->draw(t - startTime, Camera::getMatrix().m, &Camera::pos.x);
 
-	demos[index]->draw(t - startTime, Camera::getMatrix().m, &Camera::pos.x);
 }
 
 void display(void)
