@@ -5,6 +5,7 @@
 
 Geometry* DemoOne() {
 	AnimationShader* as = new AnimationShader();
+	glUseProgram(as->getProgram());
 	Geometry* g = new Geometry{ "teapot.obj", as->getProgram() };
 
 	const int numInstances = 24;
@@ -78,8 +79,6 @@ Geometry* DemoTwo() {
 		colors[(i * 3) + 1] = (ry + 1.0) / 2.5;
 		colors[(i * 3) + 2] = (rz + 1.0) / 2.5;
 		//colors[(i * 3) + 3] =((double)rand() / (RAND_MAX)) + 1;
-
-
 		startTimes[i] = 0;
 	}
 	GeometryAttributeBuffers buffers;
@@ -183,10 +182,9 @@ Geometry* DemoThree() {
 		colors[(i * 3) + 1] = (ry + 1.0) / 2.5;
 		colors[(i * 3) + 2] = (rz + 1.0) / 2.5;
 		//colors[(i * 3) + 3] =((double)rand() / (RAND_MAX)) + 1;
-
-
 		startTimes[i] = 0;
 	}
+  
 	GeometryAttributeBuffers buffers;
 	buffers.startPositions = startPositions;
 	buffers.endPositions = endPositions;
