@@ -10,6 +10,8 @@ Geometry::Geometry(Model* model, GLuint program) : model(model) {
 	setUpGeometryBuffers();
 	specularExp = DEFAULT_SPEC_EXP;
 	//createShader();
+	tex = createParticleTexture();
+
 };
 
 Geometry::Geometry(const char* modelPath, GLuint program) {
@@ -92,7 +94,7 @@ void Geometry::createShader() {
 }
 */
 
-void Geometry::draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos, int drawType) {
+void Geometry::draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos, GLuint drawType) {
 	glUseProgram(program);
 	glBindVertexArray(vao);
 	
@@ -117,10 +119,20 @@ void Geometry::draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* c
 
 	glDepthMask(false);
 
-	if(drawType == 0)
+	if (drawType == GL_POINTS) {
+		glUniform1i(glGetUniformLocation(program, "drawnAsPoints"), true);
+		glDrawElementsInstanced(GL_POINTS, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
+	}
+	else if (drawType == GL_LINES) {
+		glUniform1i(glGetUniformLocation(program, "drawnAsPoints"), false);
 		glDrawElementsInstanced(GL_LINES, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
-	else if(drawType == 1)
-		DrawModel(model, program, "in_Position", "in_Normal", "inTexCoord");
+	}
+	else {
+		glUniform1i(glGetUniformLocation(program, "drawnAsPoints"), false);
+		glDrawElementsInstanced(GL_TRIANGLES, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
+		//DrawModel(model, program, "in_Position", "in_Normal", "inTexCoord");
+	}
+	
 }
 
 

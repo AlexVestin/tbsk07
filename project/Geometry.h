@@ -23,7 +23,6 @@ struct GeometryAttributeBuffers {
 	std::vector<GLfloat> startTimes;
 };
 
-
 class Geometry {
 public:
 	Geometry(Model* model, GLuint program);
@@ -34,7 +33,7 @@ public:
 	virtual ~Geometry();
 	void setUpGeometryBuffers();
 	void createShader();
-	void draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos, int drawType);
+	void draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos, GLuint drawType);
 	
 	template <typename T = GLfloat>
 	int createBuffer(std::vector<typename T> data, GLuint attribLocation, GLuint elementSize) {

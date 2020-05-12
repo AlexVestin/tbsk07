@@ -1,4 +1,4 @@
-#version 330
+#version 330 core
 uniform sampler2D texUnit;
 uniform vec3  lightSourcesDirPosArr[4];
 uniform vec3  lightSourcesColorArr[4];
@@ -7,6 +7,7 @@ uniform float specularExponent;
 uniform vec3  camPos;
 uniform int   lightSourcesNo = 1;
 uniform int   shadingMode;
+uniform bool  drawnAsPoints;
 
 in vec4 col;
 in vec2 texCoord;
@@ -16,10 +17,13 @@ out vec4 out_Color;
 
 void main(void)
 { 
-	out_Color = col;//vec4(1.0, 1.0, 1.0, 1.0);
-	return;
-	vec4 particleCol = texture(texUnit, gl_PointCoord);
-	out_Color = particleCol;//vec4(1.0, 0.0, 0.0, 1.0);
+
+	if(drawnAsPoints) {
+		vec4 particleCol = texture(texUnit, gl_PointCoord);
+		out_Color = particleCol;//vec4(1.0, 0.0, 0.0, 1.0);
+		return;
+	}
+	
 	// We normalize the normal vector (just in case).
 	vec3 norm		  = normalize(transNormal);
 	// We have some ambient light in order to simulate general bouncing light
@@ -89,14 +93,13 @@ void main(void)
 	// Before we're done, we multiply the light with the texture.
 	//vec4 tex  = texture(texUnit, texCoord);
 	//out_Color = result * tex;
-	if(length(col) > 0) {
+
+	//if(length(col) > 0) {
 		
-	} else {
-		out_Color =  particleCol;
-	}
+	//} else {
+	//	out_Color =  particleCol;
+	//}
 
-	out_Color =  particleCol;
+	out_Color = result;
 
-	
-	
 }
