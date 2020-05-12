@@ -108,7 +108,7 @@ void draw() {
 
 	//as->draw(g, t - startTime, tot.m, Camera::getMatrix().m, &Camera::pos.x);
 	
-	g->draw(t - startTime, Camera::getMatrix().m, &Camera::pos.x);
+	g->draw(t - startTime, tot.m, Camera::getMatrix().m, &Camera::pos.x);
 }
 
 void display(void)
