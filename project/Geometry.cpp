@@ -38,14 +38,13 @@ void Geometry::setUpGeometryBuffers() {
 	glVertexAttribDivisor(vertexLoc, 0);
 
 	// Normal buffers
-	/*GLuint normalLoc = glGetAttribLocation(program, "in_Normal");
+	GLuint normalLoc = glGetAttribLocation(program, "in_Normal");
 	glGenBuffers(1, &nbo);
 	glBindBuffer(GL_ARRAY_BUFFER, nbo);
 	glBufferData(GL_ARRAY_BUFFER, model->numVertices * 3 * sizeof(GLfloat), model->normalArray, GL_STATIC_DRAW);
 	glVertexAttribPointer(normalLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(normalLoc);
 	glVertexAttribDivisor(normalLoc, 0);
-	*/
 
 	// indices
 	glGenBuffers(1, &ivbo);
@@ -94,7 +93,7 @@ void Geometry::createShader() {
 }
 */
 
-void Geometry::draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos, int drawType) {
+void Geometry::draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos, GLuint drawType) {
 	glUseProgram(program);
 	glBindVertexArray(vao);
 	
@@ -119,10 +118,20 @@ void Geometry::draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* c
 
 	glDepthMask(false);
 
-	if(drawType == 0)
+	if (drawType == GL_POINTS) {
+		glUniform1i(glGetUniformLocation(program, "drawnAsPoints"), true);
 		glDrawElementsInstanced(GL_POINTS, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
-	else if(drawType == 1)
-		DrawModel(model, program, "in_Position", "in_Normal", "inTexCoord");
+	}
+	else if (drawType == GL_LINES) {
+		glUniform1i(glGetUniformLocation(program, "drawnAsPoints"), false);
+		glDrawElementsInstanced(GL_LINES, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
+	}
+	else {
+		glUniform1i(glGetUniformLocation(program, "drawnAsPoints"), false);
+		glDrawElementsInstanced(GL_TRIANGLES, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
+		//DrawModel(model, program, "in_Position", "in_Normal", "inTexCoord");
+	}
+	
 }
 
 

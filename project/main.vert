@@ -7,6 +7,7 @@ in vec3 endPos;
 in float startTime;
 in float size;
 in vec3 inCol;
+in vec2 inTexCoord;
 
 #define PI 3.14159265359
 
@@ -72,5 +73,6 @@ void main(void)
 	gl_Position		  = projMatrix * camMatrix * tranMatrix * vec4(pos, 1.0);
 	fragPosition	  = vec3(tranMatrix * vec4(pos, 1.0));  //The fragment's position in world space
 	transNormal		  = normalMatrix * in_Normal;
+	texCoord		  = inTexCoord;
 	gl_PointSize = size;
 }

@@ -5,7 +5,7 @@
 #define PHONG_SHADING 2
 
 // The default shading mode
-GLint	DEFAULT_SHADING = FLAT_SHADING;
+GLint	DEFAULT_SHADING = PHONG_SHADING;
 // The default values of our light sources.
 GLuint  DEFAULT_LIGHT_NO			 = 2;
 vec3	DEFAULT_COLORS[]			 = { { 1.0f, 1.0f, 1.0f }, { 1.0f, 0.0f, 0.0f } };
