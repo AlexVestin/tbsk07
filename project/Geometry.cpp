@@ -37,14 +37,13 @@ void Geometry::setUpGeometryBuffers() {
 	glVertexAttribDivisor(vertexLoc, 0);
 
 	// Normal buffers
-	/*GLuint normalLoc = glGetAttribLocation(program, "in_Normal");
+	GLuint normalLoc = glGetAttribLocation(program, "in_Normal");
 	glGenBuffers(1, &nbo);
 	glBindBuffer(GL_ARRAY_BUFFER, nbo);
 	glBufferData(GL_ARRAY_BUFFER, model->numVertices * 3 * sizeof(GLfloat), model->normalArray, GL_STATIC_DRAW);
 	glVertexAttribPointer(normalLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(normalLoc);
 	glVertexAttribDivisor(normalLoc, 0);
-	*/
 
 	// indices
 	glGenBuffers(1, &ivbo);

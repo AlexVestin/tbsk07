@@ -1,6 +1,5 @@
 #version 330
 
-in vec in_TexCoord;
 in vec3 in_Position;
 in vec3 in_Normal;
 in vec3 startPos;
