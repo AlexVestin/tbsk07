@@ -18,16 +18,12 @@ Geometry::Geometry(const char* modelPath) {
 	glGenVertexArrays(1, &vao);
 	setUpGeometryBuffers();
 	createShader();
+	tex = createParticleTexture();
 };
 
 void Geometry::setUpGeometryBuffers() {
 
-	projectionMatrix = std::vector<GLfloat>(
-		{ 2.0f * near / (right - left), 0.0f, (right + left) / (right - left), 0.0f,
-	    0.0f, 2.0f * near / (top - bottom), (top + bottom) / (top - bottom), 0.0f,
-		0.0f, 0.0f, -(far + near) / (far - near), -2 * far * near / (far - near),
-		0.0f, 0.0f, -1.0f, 0.0f }
-	);
+
 
 	int i;
 	glBindVertexArray(vao);
@@ -79,7 +75,11 @@ void Geometry::createShader() {
 	};
 
 	glUseProgram(program);
-	glUniformMatrix4fv(glGetUniformLocation(program, "projMatrix"), 1, GL_TRUE, &projectionMatrix[0]);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, tex);
+
+
+	glUniformMatrix4fv(glGetUniformLocation(program, "projMatrix"), 1, GL_TRUE, &Camera::projectionMatrix[0]);
 		
 	// Upload light data
 	GLuint loc = glGetUniformLocation(program, "lightSourcesDirPosArr");
@@ -113,16 +113,66 @@ void Geometry::draw(float t, GLfloat* camMatrix, GLfloat* camPos) {
 	glUniformMatrix4fv(glGetUniformLocation(program, "tranMatrix"), 1, GL_TRUE, Mult(trans, rot).m);
 	glUniform1f(glGetUniformLocation(program, "specularExponent"), specularExponent[0]);
 	glUniform1f(glGetUniformLocation(program, "time"), t / 1000.);
-	glDrawElementsInstanced(GL_TRIANGLES, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
+
+	glDisable(GL_DEPTH_WRITEMASK);
+	glDrawElementsInstanced(GL_POINTS, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
 }
 
 
-void Geometry::setUpInstanceBuffers(std::vector<GLfloat>& startPositions, std::vector<GLfloat>& endPositions, std::vector<GLfloat>& startTime) {
+
+GLuint Geometry::createParticleTexture() {
+	GLuint tex;
+	std::string path = __FILE__; //gets source code path, include file name
+	path = path.substr(0, 1 + path.find_last_of('\\')) + "\\" + "particle2.tga";
+	
+	// LoadTGASimple only takes char* and not const char*, so we need to make it writeable
+	char* writable = new char[path.size() + 1];
+	std::copy(path.begin(), path.end(), writable);
+	writable[path.size()] = '\0'; // don't forget the terminat
+	LoadTGATextureSimple(writable, &tex);
+	
+	glUseProgram(program);
+	glUniform1i(glGetUniformLocation(program, "texUnit"), 0); // Texture unit 0
+	return tex;
+}
+
+
+void Geometry::setUpInstanceBuffers(GeometryAttributeBuffers& attributes) {
+	glBindVertexArray(vao);
+
+	if (attributes.startPositions.empty()) {
+		if (!attributes.instanceCount) {
+			throw "Error, setUpInstanceBuffer requires either startPositions or instanceCount to be used";
+		}
+		instanceCount = attributes.instanceCount;
+	}
+	else {
+		instanceCount = attributes.startPositions.size() / 3;
+		createBuffer(attributes.startPositions, glGetAttribLocation(program, "startPos"), 3);
+	}
+
+	if (!attributes.endPositions.empty()) {
+		createBuffer(attributes.endPositions, glGetAttribLocation(program, "endPos"), 3);
+	}
+
+	if (!attributes.startTimes.empty()) {
+		createBuffer(attributes.startTimes, glGetAttribLocation(program, "startTime"), 3);
+	}
+
+	if (!attributes.sizes.empty()) {
+		createBuffer(attributes.sizes, glGetAttribLocation(program, "size"), 3);
+	}
+
+	if (!attributes.colors.empty()) {
+		createBuffer(attributes.colors, glGetAttribLocation(program, "inCol"), 3);
+	}
+}
+
+void Geometry::setUpInstanceBuffers(std::vector<GLfloat>& startPositions, std::vector<GLfloat>& endPositions) {
 	glBindVertexArray(vao);
 	instanceCount = startPositions.size() / 3;
-	createBuffer(startPositions, 2, 3);
-	createBuffer(endPositions, 3, 3);
-	createBuffer(startTime, 4, 1);
+	createBuffer(startPositions, glGetAttribLocation(program, "startPosition"), 3);
+	createBuffer(endPositions, glGetAttribLocation(program, "endPosition"), 3);
 }
 
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "Camera.h"
 #include <string>
 #include <loadobj.h>
 #include "VectorUtils3.h"
@@ -7,16 +8,19 @@
 #include "glew.h"
 #include "GL_utilities.h"
 #include "AnimationShader.h"
-
+#include "LoadTGA.h"
 #include <GL/gl.h>
 
 
-#define near 1.0
-#define far 300.0
-#define right 0.5
-#define left -0.5
-#define top 0.5
-#define bottom -0.5
+
+struct GeometryAttributeBuffers {
+	int instanceCount;
+	std::vector<GLfloat> startPositions;
+	std::vector<GLfloat> endPositions;
+	std::vector<GLfloat> sizes;
+	std::vector<GLfloat> colors;
+	std::vector<GLfloat> startTimes;
+};
 
 
 class Geometry {
@@ -48,14 +52,16 @@ public:
 
 	void setUpInstanceBuffers(std::vector<GLfloat>& startPositions);
 	void setUpInstanceBuffers(std::vector<GLfloat>& startPositions, std::vector<GLfloat>& endPositions);
-	void setUpInstanceBuffers(std::vector<GLfloat>& buf1, std::vector<GLfloat>& buf2, std::vector<GLfloat>& buf3);
+	// TODO should make an input object instead
+	void setUpInstanceBuffers(GeometryAttributeBuffers& attributeBuffers);
 
+	GLuint createParticleTexture();
 
 
 private:
-	std::vector<GLfloat> projectionMatrix;
 	int myInt;
 	int instanceCount;
+<<<<<<< HEAD
 	GLuint  vao;
 	GLuint  vbo;
 	GLuint  nbo;
@@ -63,4 +69,14 @@ private:
 	GLfloat specularExp;
 	Model*  model;
 	GLuint  program;
+=======
+	GLuint vao;
+	GLuint vbo;
+	GLuint nbo;
+	GLuint ivbo;
+	Model* model;
+	GLuint program;
+	GLuint tex;
+
+>>>>>>> d87eb666f34384fed3b2ff626a487d93440c38e6
 };
