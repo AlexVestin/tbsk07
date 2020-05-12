@@ -6,6 +6,7 @@
 #include <vector>
 #include "glew.h"
 #include "GL_utilities.h"
+#include "AnimationShader.h"
 
 #include <GL/gl.h>
 
@@ -29,6 +30,7 @@ public:
 	void testFunction();
 	void setUpGeometryBuffers();
 	void createShader();
+	void assignShader(AnimationShader shader);
 	void draw(float t, GLfloat* cameraMatrix, GLfloat* camPos);
 	
 	template <typename T = GLfloat>
@@ -54,10 +56,11 @@ private:
 	std::vector<GLfloat> projectionMatrix;
 	int myInt;
 	int instanceCount;
-	GLuint vao;
-	GLuint vbo;
-	GLuint nbo;
-	GLuint ivbo;
-	Model* model;
-	GLuint program;
+	GLuint  vao;
+	GLuint  vbo;
+	GLuint  nbo;
+	GLuint  ivbo;
+	GLfloat specularExp;
+	Model*  model;
+	GLuint  program;
 };

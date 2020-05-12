@@ -64,11 +64,11 @@ void Camera::handleKeyPress() {
 		pos.z -= mv * lookAtPoint.z;
 	}
 
-	if (glutKeyIsDown(GLUT_KEY_SPACE)) {
+	if (glutKeyIsDown(GLUT_KEY_SPACE) || glutKeyIsDown('i')) {
 		pos.y += mv;
 	}
 
-	if (glutKeyIsDown(GLUT_KEY_LEFT_SHIFT)) {
+	if (glutKeyIsDown(GLUT_KEY_LEFT_SHIFT) || glutKeyIsDown('o')) {
 		pos.y -= mv;
 	}
 
@@ -98,4 +98,22 @@ void Camera::handleKeyPress() {
 		pos.y += mv * lookAtPoint.y;
 		pos.z += mv * lookAtPoint.z;
 	}	
+
+	// If either q or e is pressed, we need to change our lookAtPoint.
+	if (glutKeyIsDown('q') || glutKeyIsDown('e')) {
+		if (glutKeyIsDown('q'))
+			yaw -= mv / 2;
+		
+		if (glutKeyIsDown('e'))
+			yaw += mv / 2;
+	
+		yaw = fmod(yaw, 360.0f);
+		
+		vec3 cameraFront;
+		cameraFront.x = cosf(toRad(yaw)) * cosf(toRad(pitch));
+		cameraFront.y = sinf(toRad(pitch));
+		cameraFront.z = sinf(toRad(yaw)) * cosf(toRad(pitch));
+		lookAtPoint   = Normalize(cameraFront);
+	}
+
 }

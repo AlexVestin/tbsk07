@@ -14,7 +14,6 @@
     <ProjectGuid>{492A4FA5-6ADE-40ED-A564-20ADD198714E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>psychteapot</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>project</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

@@ -1,7 +1,5 @@
-
 #pragma once
 #include "Geometry.h"
-
 
 #define FLAT_SHADING 0
 #define LAMBERT_SHADING 1
@@ -91,6 +89,10 @@ void Geometry::createShader() {
 
 	glUniform1iv(glGetUniformLocation(program, "isDirectional"), lightNo, isDirectional);
 	glUniform1i(glGetUniformLocation(program, "lightSourcesNo"), lightNo);
+}
+
+void Geometry::assignShader(AnimationShader shader) {
+
 }
 
 void Geometry::draw(float t, GLfloat* camMatrix, GLfloat* camPos) {
