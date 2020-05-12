@@ -55,7 +55,7 @@ void init(void)
 	// Load the models.
 	demos.push_back(DemoOne());
 	demos.push_back(DemoTwo());
-	//demos.push_back(DemoThree());
+	demos.push_back(DemoThree());
 }
 
 void draw() {

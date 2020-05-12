@@ -1,6 +1,4 @@
-﻿  main.cpp
-C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.h(101,1): warning C4005: 'GLUT_KEY_SPACE': macro redefinition
-C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.h(95): message : see previous definition of 'GLUT_KEY_SPACE'
+﻿  Demo1.cpp
 C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(71,49): warning C4190: 'SetVector' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
 C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
 C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(73,32): warning C4190: 'VectorSub' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
@@ -46,13 +44,141 @@ C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(249,38): warning C4244: 
 C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(249,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
 C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(249,24): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
 C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(249,17): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\alex\prog\tsbk07\project\Camera.h(6,1): warning C4005: 'near': macro redefinition
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(95): message : see previous definition of 'near'
-C:\Users\alex\prog\tsbk07\project\Camera.h(7,1): warning C4005: 'far': macro redefinition
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(94): message : see previous definition of 'far'
+C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.h(101,1): warning C4005: 'GLUT_KEY_SPACE': macro redefinition
+C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.h(95): message : see previous definition of 'GLUT_KEY_SPACE'
 C:\Users\alex\prog\tsbk07\project\Camera.h(25,2): warning C4305: 'initializing': truncation from 'double' to 'const GLfloat'
 C:\Users\alex\prog\tsbk07\project\Camera.h(31,14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\alex\prog\tsbk07\project\main.cpp(67,30): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\alex\prog\tsbk07\project\main.cpp(96,2): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\alex\prog\tsbk07\project\main.cpp(97,2): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(20,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(21,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(22,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(32,18): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(34,32): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(35,36): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(36,36): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(64,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(65,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(66,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(76,18): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(78,32): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(79,36): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(80,36): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(119,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(120,45): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(122,45): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(167,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(168,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(169,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(179,18): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(181,32): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(182,36): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\alex\prog\tsbk07\project\Demo1.cpp(183,36): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+  Geometry.cpp
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(71,49): warning C4190: 'SetVector' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(73,32): warning C4190: 'VectorSub' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(74,32): warning C4190: 'VectorAdd' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(75,35): warning C4190: 'CrossProduct' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(77,36): warning C4190: 'ScalarMult' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(79,24): warning C4190: 'Normalize' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(80,47): warning C4190: 'CalcNormalVector' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(97,31): warning C4190: 'MultVec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(98,31): warning C4190: 'MultVec4' has C-linkage specified, but returns UDT 'vec4' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(46): message : see declaration of 'vec4'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(103,35): warning C4190: 'MultMat3Vec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(136,25): warning C4190: 'vec4tovec3' has C-linkage specified, but returns UDT 'vec3' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(33): message : see declaration of 'vec3'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(137,25): warning C4190: 'vec3tovec4' has C-linkage specified, but returns UDT 'vec4' which is incompatible with C
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(46): message : see declaration of 'vec4'
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(174,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(174,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(174,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(180,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(180,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(180,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(186,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(186,24): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(186,17): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(237,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(237,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(237,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(237,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(243,36): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(243,29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(243,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(243,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(249,38): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(249,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(249,24): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\VectorUtils3.h(249,17): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.h(101,1): warning C4005: 'GLUT_KEY_SPACE': macro redefinition
+C:\Users\alex\prog\tsbk07\project\common\Windows\MicroGlut.h(95): message : see previous definition of 'GLUT_KEY_SPACE'
+C:\Users\alex\prog\tsbk07\project\Camera.h(25,2): warning C4305: 'initializing': truncation from 'double' to 'const GLfloat'
+C:\Users\alex\prog\tsbk07\project\Camera.h(31,14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Geometry.cpp(26,6): warning C4101: 'i': unreferenced local variable
+C:\Users\alex\prog\tsbk07\project\Geometry.cpp(116,55): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  Generating Code...
   psychteapot.vcxproj -> C:\Users\alex\prog\tsbk07\project\Debug\project.exe

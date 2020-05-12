@@ -99,12 +99,13 @@ Geometry* DemoThree() {
 	const int height = 100;
 
 	int vertexCount = width*height;
-	int triangleCount = vertexCount  * 2;
+	int triangleCount = (width-1)*(height-1) * 2;
 	int x, z;
 
 	std::vector<GLfloat> vertexArray(3 * vertexCount);
-	std::vector<GLuint> indexArray(3 * vertexCount);
-	std::vector<GLfloat> normalArray(3 * triangleCount);
+	std::vector<GLfloat> normalArray(3 * vertexCount);
+	std::vector<GLuint> indexArray(3 * triangleCount);
+	
 
 
 	//GLfloat* vertexArray = (GLfloat*)malloc(sizeof(GLfloat) * 3 * vertexCount);
@@ -116,9 +117,9 @@ Geometry* DemoThree() {
 		{
 			// Vertex array. You need to scale this properly
 			float h = ((double)rand() / (RAND_MAX));
-			vertexArray[(x + z * width) * 3 + 0] = x / 4.0;
+			vertexArray[(x + z * width) * 3 + 0] = x / 40.0;
 			vertexArray[(x + z * width) * 3 + 1] = h;
-			vertexArray[(x + z * width) * 3 + 2] = z / 4.0;
+			vertexArray[(x + z * width) * 3 + 2] = z / 40.0;
 			// Normal vectors. You need to calculate these.
 		}
 	for (x = 0; x < width - 1; x++)
@@ -141,7 +142,7 @@ Geometry* DemoThree() {
 	// Create Model and upload to GPU:
 	Model* model = LoadDataToModel(
 		&vertexArray[0],
-		NULL,
+		&normalArray[0],
 		NULL,
 		NULL,
 		&indexArray[0],
@@ -152,10 +153,9 @@ Geometry* DemoThree() {
 
 	std::cout << "model loaded" << std::endl;
     AnimationShader* as = new AnimationShader();
-
 	Geometry* g = new Geometry{ model, as->getProgram() };
 
-	const int numInstances = 200;
+	const int numInstances = vertexCount;
 	std::vector<GLfloat> startPositions(numInstances * 3);
 	std::vector<GLfloat> endPositions(numInstances * 3);
 	std::vector<GLfloat> startTimes(numInstances);
@@ -190,6 +190,7 @@ Geometry* DemoThree() {
 	buffers.endPositions = endPositions;
 	buffers.startTimes = startTimes;
 	buffers.sizes = sizes;
+	buffers.instanceCount = 1;
 
 	g->setUpInstanceBuffers(buffers);
 

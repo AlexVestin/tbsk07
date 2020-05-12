@@ -118,7 +118,7 @@ void Geometry::draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* c
 	glDepthMask(false);
 
 	if(drawType == 0)
-		glDrawElementsInstanced(GL_POINTS, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
+		glDrawElementsInstanced(GL_LINES, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
 	else if(drawType == 1)
 		DrawModel(model, program, "in_Position", "in_Normal", "inTexCoord");
 }
@@ -144,14 +144,13 @@ void Geometry::setUpInstanceBuffers(GeometryAttributeBuffers& attributes) {
 	glUseProgram(program);
 	glBindVertexArray(vao);
 
-	if (attributes.startPositions.empty()) {
-		if (!attributes.instanceCount) {
-			throw "Error, setUpInstanceBuffer requires either startPositions or instanceCount to be used";
-		}
-		instanceCount = attributes.instanceCount;
+
+	if (!attributes.instanceCount) {
+		throw "Error: instanceCount required";
 	}
-	else {
-		instanceCount = attributes.startPositions.size() / 3;
+
+	instanceCount = attributes.instanceCount;
+	if (!attributes.startPositions.empty()) {
 		createBuffer(attributes.startPositions, glGetAttribLocation(program, "startPos"), 3);
 	}
 
