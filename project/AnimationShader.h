@@ -63,12 +63,47 @@ public:
 		vec3   lightSourcesDirectionsPositions[]
 	);
 
-	static constexpr char* NoiseMovement = 
-			"float noiseT = time / 2.0;"
-			"float noise_x = noiseVec2(pos.xy * noise(noiseT)) - 0.5;\n"
-			"float noise_y = noiseVec2(pos.xz * noise(noiseT)) - 0.5;\n"
-			"float noise_z = noiseVec2(pos.yz * noise(noiseT)) - 0.5;\n"
-			"pos += noiseAmt * 25. * vec3(noise_x, noise_y, noise_z);\n";
+	static const std::string Tube(float radius = 2.0, float tdiv = 0.02, float distance = 20.0) {
+
+		std::ostringstream ss;
+		ss << "float radius = " << radius << ";\n";
+		ss << "float tdiv = " << tdiv << ";\n";
+		ss << "float distance = " << distance<< ";\n";
+		ss << "pos = vec3(sin(dt / tdiv) * radius, cos(dt / tdiv) * radius, progress * distance);\n";
+
+		std::cout << ss.str() << std::endl;
+		return ss.str();
+	}
+
+	static const std::string NoiseMovement(float speed = 12.0, float amp = 20.0) {
+		std::ostringstream ss;
+		ss << "float noiseT = time / " << speed << ";\n";
+		ss << "float noise_x = noiseVec2(pos.xy * noise(noiseT)) - 0.5;\n";
+		ss << "float noise_y = noiseVec2(pos.xz * noise(noiseT)) - 0.5;\n";
+		ss << "float noise_z = noiseVec2(pos.yz * noise(noiseT)) - 0.5;\n";
+		ss << "pos += noiseAmt *" <<  amp << "* vec3(noise_x, noise_y, noise_z);\n";
+		return ss.str();
+	}
+
+	static const std::string Merge(float weight = 0.4) {
+		std::ostringstream ss;
+		ss << "float weight = " << weight << ";\n";
+		ss << "pos = weight * (1. - progress) * _pos + progress * pos * (1. / weight);";
+		return ss.str();
+	}
+
+	static const std::string Gravity(float force = 100.0) {
+		std::ostringstream ss;
+
+		ss << "float _gpull = "<< force << " * progress * progress;\n";
+		ss << "pos.y -= _gpull ;\n";
+		return ss.str();
+	}
+
+
+	
+
+	
 
 	// Draws the given object.
 	void draw(Geometry *model, float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos);

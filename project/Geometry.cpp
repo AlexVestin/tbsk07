@@ -3,25 +3,36 @@
 
 #define DEFAULT_SPEC_EXP 100.0f
 
-// Useful if loaded using LoadModelFromXXX
-Geometry::Geometry(Model* model, GLuint program) : model(model) {
-	this->program = program;
-	glGenVertexArrays(1, &vao);
-	setUpGeometryBuffers();
-	specularExp = DEFAULT_SPEC_EXP;
-	//createShader();
-	tex = createParticleTexture();
 
+
+Geometry::Geometry(GeometryAttributeBuffers attributes, GLuint program, GLuint drawType) : drawType(drawType), program(program) {
+	glGenVertexArrays(1, &vao);
+	glBindVertexArray(vao);
+	drawFunc = DrawFunc::ELEMENTS;
+	specularExp = DEFAULT_SPEC_EXP;
+	tex = createParticleTexture();
+	setUpInstanceBuffers(attributes);
+		
+	float dur = attributes.duration ? attributes.duration : 30.f;
+	std::cout << "duration: " << dur << "instanceCount: " << instanceCount << std::endl;
+	glUniform1f(glGetUniformLocation(program, "duration"), dur);
+	glUniform1i(glGetUniformLocation(program, "instanceCount"), instanceCount);
+	glUniform1i(glGetUniformLocation(program, "repeat"), attributes.repeat);
+
+}
+
+Geometry::Geometry(GeometryAttributeBuffers attributes, Model* model, GLuint program, GLuint drawType) : Geometry(attributes, program, drawType)  {
+	this->model = model;
+	setUpGeometryBuffers();
 };
 
-Geometry::Geometry(const char* modelPath, GLuint program) {
+Geometry::Geometry(GeometryAttributeBuffers attributes, GLuint program, GLuint drawType, DrawFunc drawFunc) : Geometry(attributes, program, drawType) {
+	this->drawFunc = drawFunc;
+};
+
+Geometry::Geometry(GeometryAttributeBuffers attributes, const char* modelPath, GLuint program, GLuint drawType): Geometry(attributes, program, drawType) {
 	model		  = LoadModelPlus(modelPath);
-	this->program = program;
-	glGenVertexArrays(1, &vao);
 	setUpGeometryBuffers();
-	specularExp = DEFAULT_SPEC_EXP;
-	//createShader();
-	tex = createParticleTexture();
 };
 
 void Geometry::setUpGeometryBuffers() {
@@ -30,7 +41,6 @@ void Geometry::setUpGeometryBuffers() {
 	// Set up buffer objects to copy model data to instance
 	// Vertex buffer
 	GLuint vertexLoc = glGetAttribLocation(program, "in_Position");
-	std::cout << "vertexLoc: " << vertexLoc << std::endl;
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, model->numVertices * 3 * sizeof(GLfloat), model->vertexArray, GL_STATIC_DRAW);
@@ -53,48 +63,7 @@ void Geometry::setUpGeometryBuffers() {
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, model->numIndices * sizeof(GLuint), model->indexArray, GL_STATIC_DRAW);
 }
 
-/*
-void Geometry::createShader() {
-	program = loadShaders("main.vert", "main.frag");
-	glUseProgram(program);
-
-	// Light sources and their variables.
-	GLuint lightNo = 2;
-
-	// Specular exponents for each object.
-	GLfloat specularExponent[] = { 100.0 };
-
-	// Values for light sources.
-	vec3 lightSourcesColorsArr[] = {
-		{1.0f, 1.0f, 1.0f},  // White light
-		{1.0f, 0.0f, 0.0f}	 // Red light
-	};
-
-	GLint isDirectional[] = { 1, 1 };
-
-	vec3 lightSourcesDirectionsPositions[] = {
-		{1.0f, 1.0f, 0.0f},
-		{0.0f,-1.0f, 1.0f}
-	};
-
-	glUseProgram(program);
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, tex);
-
-	glUniformMatrix4fv(glGetUniformLocation(program, "projMatrix"), 1, GL_TRUE, &Camera::projectionMatrix[0]);
-		
-	// Upload light data
-	GLuint loc = glGetUniformLocation(program, "lightSourcesDirPosArr");
-
-	glUniform3fv(loc, lightNo, &lightSourcesDirectionsPositions[0].x);
-	glUniform3fv(glGetUniformLocation(program, "lightSourcesColorArr"), lightNo, &lightSourcesColorsArr[0].x);
-
-	glUniform1iv(glGetUniformLocation(program, "isDirectional"), lightNo, isDirectional);
-	glUniform1i(glGetUniformLocation(program, "lightSourcesNo"), lightNo);
-}
-*/
-
-void Geometry::draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos, GLuint drawType) {
+void Geometry::draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos) {
 	glUseProgram(program);
 	glBindVertexArray(vao);
 	
@@ -117,22 +86,16 @@ void Geometry::draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* c
 	glUniform1f(glGetUniformLocation(program, "specularExponent"), specularExp);
 	glUniform1f(glGetUniformLocation(program, "time"), t / 1000.);
 
-	glDepthMask(false);
-
-	if (drawType == GL_POINTS) {
-		glUniform1i(glGetUniformLocation(program, "drawnAsPoints"), true);
-		glDrawElementsInstanced(GL_POINTS, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
-	}
-	else if (drawType == GL_LINES) {
-		glUniform1i(glGetUniformLocation(program, "drawnAsPoints"), false);
-		glDrawElementsInstanced(GL_LINES, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
-	}
-	else {
-		glUniform1i(glGetUniformLocation(program, "drawnAsPoints"), false);
-		glDrawElementsInstanced(GL_TRIANGLES, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
-		//DrawModel(model, program, "in_Position", "in_Normal", "inTexCoord");
-	}
+	//glDepthMask(false);
 	
+	bool drawAsPoints = drawType == GL_POINTS;
+	glUniform1i(glGetUniformLocation(program, "drawnAsPoints"), drawType == GL_POINTS);
+	
+	if (drawFunc == DrawFunc::ELEMENTS) {
+		glDrawElementsInstanced(drawType, model->numIndices, GL_UNSIGNED_INT, 0L, instanceCount);
+	} else {
+		glDrawArraysInstanced(drawType, 0, 1, instanceCount);
+	}
 }
 
 
@@ -147,8 +110,6 @@ GLuint Geometry::createParticleTexture() {
 	writable[path.size()] = '\0'; // don't forget the terminat
 	LoadTGATextureSimple(writable, &tex);
 	
-	//glUseProgram(program);
-	//glUniform1i(glGetUniformLocation(program, "texUnit"), 0); // Texture unit 0
 	return tex;
 }
 
@@ -156,12 +117,17 @@ void Geometry::setUpInstanceBuffers(GeometryAttributeBuffers& attributes) {
 	glUseProgram(program);
 	glBindVertexArray(vao);
 
+	std::cout << glGetError() << std::endl; 
+
 	if (!attributes.instanceCount) {
 		throw "Error: instanceCount required";
 	}
 
+
 	instanceCount = attributes.instanceCount;
 	if (!attributes.startPositions.empty()) {
+		std::cout << "Instance set up" << glGetAttribLocation(program, "startPos") << std::endl;
+
 		createBuffer(attributes.startPositions, glGetAttribLocation(program, "startPos"), 3);
 	}
 

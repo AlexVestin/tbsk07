@@ -79,10 +79,8 @@ std::string AnimationShader::prepareVertex(AnimationShaderInput asi) {
 
 	// split by newline
 	auto ss = std::stringstream{ vs };
-	std::cout << "found breakpoint\n" << std::endl;
 
 	for (std::string line; std::getline(ss, line, '\n');) {
-		std::cout << line << std::endl;
 
 		
 		if (line.find(breakpointDefines) != std::string::npos) {
@@ -92,7 +90,6 @@ std::string AnimationShader::prepareVertex(AnimationShaderInput asi) {
 		}
 
 		if (line.find(breakpointSnippet) != std::string::npos) {
-			std::cout << "found breakpoint\n" << std::endl;
 			for (auto& sline : asi.vertexSnippets) {
 				newvs += sline + "\n";
 			}

@@ -13,9 +13,6 @@ float Camera::yaw = -90.0;
 
 
 
-
-
-
 mat4 Camera::getMatrix() {
 	return lookAt(
 		pos.x, pos.y, pos.z, 

@@ -14,8 +14,17 @@
 
 class AnimationShader;
 
+
+enum class DrawFunc {
+	ARRAY,
+	ELEMENTS
+};
+
+
 struct GeometryAttributeBuffers {
 	int instanceCount;
+	float duration;
+	bool repeat;
 	std::vector<GLfloat> startPositions;
 	std::vector<GLfloat> endPositions;
 	std::vector<GLfloat> sizes;
@@ -25,15 +34,16 @@ struct GeometryAttributeBuffers {
 
 class Geometry {
 public:
-	Geometry(Model* model, GLuint program);
-	Geometry(const char* modelPath, GLuint program);
+	Geometry(GeometryAttributeBuffers attributes, GLuint program, GLuint drawType = GL_TRIANGLES);
+	Geometry(GeometryAttributeBuffers attributes, GLuint program, GLuint drawType, DrawFunc drawFunc);
+	Geometry(GeometryAttributeBuffers attributes, Model* model, GLuint program, GLuint drawType = GL_TRIANGLES);
+	Geometry(GeometryAttributeBuffers attributes, const char* modelPath, GLuint program, GLuint drawType = GL_TRIANGLES);
 
 	// Desctructor
 
 	virtual ~Geometry();
 	void setUpGeometryBuffers();
-	void createShader();
-	void draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos, GLuint drawType);
+	void draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos);
 	
 	template <typename T = GLfloat>
 	int createBuffer(std::vector<typename T> data, GLuint attribLocation, GLuint elementSize) {
@@ -47,12 +57,6 @@ public:
 		glVertexAttribDivisor(attribLocation, 1);
 		return buf;
 	}
-
-	void setUpInstanceBuffers(std::vector<GLfloat>& startPositions);
-	void setUpInstanceBuffers(std::vector<GLfloat>& startPositions, std::vector<GLfloat>& endPositions);
-	// TODO should make an input object instead
-	void setUpInstanceBuffers(GeometryAttributeBuffers& attributeBuffers);
-
 	GLuint createParticleTexture();
 
 	int		getInstanceCount() { return instanceCount; };
@@ -62,8 +66,14 @@ public:
 	GLuint  getTex() { return tex; };
 
 private:
-	int instanceCount;
 
+	void setUpInstanceBuffers(std::vector<GLfloat>& startPositions);
+	void setUpInstanceBuffers(std::vector<GLfloat>& startPositions, std::vector<GLfloat>& endPositions);
+	// TODO should make an input object instead
+	void setUpInstanceBuffers(GeometryAttributeBuffers& attributeBuffers);
+	int instanceCount;
+	DrawFunc drawFunc;
+	GLuint drawType;
 	GLuint  tex;
 	GLuint  vao;
 	GLuint  vbo;

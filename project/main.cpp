@@ -36,7 +36,6 @@
 // World objects
 
 std::vector<Geometry*> demos;
-AnimationShader* as;
 float startTime = 0;
 
 void init(void)
@@ -44,7 +43,7 @@ void init(void)
 	dumpInfo();
 	// GL inits
 	glClearColor(0.0, 0.0, 0.0, 0);
-	glDisable(GL_DEPTH_TEST);
+	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_PROGRAM_POINT_SIZE);
 	glEnable(GL_POINT_SPRITE);
@@ -52,25 +51,29 @@ void init(void)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	printError("GL inits");
-	// Load the models.
-	demos.push_back(DemoOne());
-	//demos.push_back(DemoTwo());
-	//demos.push_back(DemoThree());
+	demos = {
+		Demo1(),
+		Demo2(),
+		Demo3(),
+		Demo4(),
+		Demo5(),
+		//Demo6(),
+		Demo7(),
+		Demo8(),
+	};
+
+
 }
 
 void draw() {
 	GLfloat t = (GLfloat)glutGet(GLUT_ELAPSED_TIME);
 	Camera::handleKeyPress();
-	int index = (int)(t / 2000.) % demos.size();
+	int index = (int)(t / 10000.) % demos.size();
 	
 	mat4 trans = T(0, 0, 0);
 	mat4 rot = Rx(-M_PI / 2);//Mult(Rx(-M_PI / 2), Rz(t / 2500)); // The teapot object is on the side.
 	mat4 tot = Mult(trans, rot);
-	demos[index]->draw(t - startTime, trans.m, Camera::getMatrix().m, &Camera::pos.x, GL_TRIANGLES);
-
-	//as->draw(g, t - startTime, tot.m, Camera::getMatrix().m, &Camera::pos.x);
-	//g->draw(t - startTime, tot.m, Camera::getMatrix().m, &Camera::pos.x);
-
+	demos[index]->draw(t - startTime, trans.m, Camera::getMatrix().m, &Camera::pos.x);
 }
 
 void display(void)

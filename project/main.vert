@@ -111,8 +111,9 @@ float fbm(vec3 x) {
 
 uniform mat4 tranMatrix, projMatrix, camMatrix;
 uniform mat4 rot, trans, total;
-
+uniform int instanceCount;
 uniform float time; 
+uniform bool repeat;
 
 out vec3 transNormal;
 out vec2 texCoord;
@@ -122,28 +123,31 @@ out vec4 col;
 // --- BREAKPOINT-DEFINES --- //	
 
 
-
 void main(void) {
 	col = vec4(inCol.xyz, 1.0);
 	vec3 diff = endPos - startPos;
 	float dt = time - startTime;
-	dt =  dt > 0 ? dt : 0;
+	if(!repeat) {
+		dt =  dt > 0 ? dt : 0;
+	} 
+	
+	
 	float progress =  mod(dt, duration) / duration;
 
 	// Make a value that goes [0 ... 1.0 ... 0]
-	float noiseAmt = progress < 0.5 ? progress * 2. : 2. - progress * 2.0;
-		
+	float noiseAmt = progress < 0.5 ? progress * 2. : 2. - progress * 2.0;		
 	vec3 pos = (in_Position + startPos) + progress * diff;
-	
+	vec3 _pos = pos;
 
-	// --- BREAKPOINT-SNIPPETS --- //	
+	// --- BREAKPOINT-SNIPPETS --- //
+
 
 	mat3 normalMatrix = mat3(tranMatrix);
 	gl_Position		  = projMatrix * camMatrix * tranMatrix * vec4(pos, 1.0);
 	fragPosition	  = vec3(tranMatrix * vec4(pos, 1.0));  //The fragment's position in world space
 	transNormal		  = normalMatrix * in_Normal;
 	texCoord		  = inTexCoord;
-	gl_PointSize = size;
+	gl_PointSize =  size;
 
 	// --- BREAKPOINT-FINAL --- //	
 
