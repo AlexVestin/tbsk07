@@ -52,7 +52,10 @@ C:\Users\alex\prog\tsbk07\project\Camera.h(7,1): warning C4005: 'far': macro red
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(94): message : see previous definition of 'far'
 C:\Users\alex\prog\tsbk07\project\Camera.h(25,2): warning C4305: 'initializing': truncation from 'double' to 'const GLfloat'
 C:\Users\alex\prog\tsbk07\project\Camera.h(31,14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\alex\prog\tsbk07\project\main.cpp(74,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\alex\prog\tsbk07\project\main.cpp(99,2): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\alex\prog\tsbk07\project\main.cpp(100,2): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\alex\prog\tsbk07\project\Geometry.h(51,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Geometry.h(52,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\Geometry.h(53,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\alex\prog\tsbk07\project\main.cpp(72,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\alex\prog\tsbk07\project\main.cpp(97,2): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\alex\prog\tsbk07\project\main.cpp(98,2): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   psychteapot.vcxproj -> C:\Users\alex\prog\tsbk07\project\Debug\project.exe

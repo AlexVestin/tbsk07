@@ -92,6 +92,21 @@ public:
 		return ss.str();
 	}
 
+	static const std::string AddForce(float x = 0.33, float y = 0.33, float z = 0.33) {
+		std::ostringstream ss;
+		ss << "vec3 _af = vec3(" << x << "* time , " << y << " * time , " << z << " * time);\n";
+		ss << "pos += _af;";
+		return ss.str();
+	}
+
+
+	static const std::string MultiplyForce(float x = 0.33, float y = 0.33, float z = 0.33) {
+		std::ostringstream ss;
+		ss << "vec3 _mf = vec3(" << x << "* time , " << y << " * time , " << z << " * time);\n";
+		ss << "pos *= _mf;";
+		return ss.str();
+	}
+
 	static const std::string Gravity(float force = 100.0) {
 		std::ostringstream ss;
 
@@ -101,9 +116,6 @@ public:
 	}
 
 
-	
-
-	
 
 	// Draws the given object.
 	void draw(Geometry *model, float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos);

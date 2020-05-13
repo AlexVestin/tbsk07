@@ -8,18 +8,18 @@
 Geometry* Demo1() {
 	AnimationShader* as = new AnimationShader();
 
-	const int numInstances = 20;
+	const int numInstances = 20000;
 	std::vector<GLfloat> startPositions(numInstances * 3);
 	std::vector<GLfloat> endPositions(numInstances * 3);
 	std::vector<GLfloat> startTimes(numInstances);
 	std::vector<GLfloat> sizes(numInstances);
 	std::vector<GLfloat> colors(numInstances * 3);
 
-	float dist = 24.0;
+	float dist = 1900.0;
 	for (int i = 0; i < numInstances; i++) {
-		float rx = ((double)rand() / (RAND_MAX));
-		float ry = ((double)rand() / (RAND_MAX));
-		float rz = ((double)rand() / (RAND_MAX));
+		float rx = ((double)rand() / (RAND_MAX)) - 0.5;
+		float ry = ((double)rand() / (RAND_MAX)) - 0.5;
+		float rz = ((double)rand() / (RAND_MAX)) - 0.5;
 
 		startPositions[(i * 3)] = (float)rx * dist;
 		startPositions[(i * 3) + 1] = (float)ry * dist;
@@ -52,20 +52,21 @@ Geometry* Demo1() {
 
 
 Geometry* Demo2() {
-  AnimationShader* as = new AnimationShader();
 
-	const int numInstances = 200;
+  AnimationShader* as = new AnimationShader(AnimationShader::NoiseMovement());
+
+	const int numInstances = 2000;
 	std::vector<GLfloat> startPositions(numInstances * 3);
 	std::vector<GLfloat> endPositions(numInstances * 3);
 	std::vector<GLfloat> startTimes(numInstances);
 	std::vector<GLfloat> sizes(numInstances);
 	std::vector<GLfloat> colors(numInstances * 3);
 
-	float dist = 50.0;
+	float dist = 500.0;
 	for (int i = 0; i < numInstances; i++) {
-		float rx = ((double)rand() / (RAND_MAX));
-		float ry = ((double)rand() / (RAND_MAX));
-		float rz = ((double)rand() / (RAND_MAX));
+		float rx = ((double)rand() / (RAND_MAX)) - 0.5;
+		float ry = ((double)rand() / (RAND_MAX)) - 0.5;
+		float rz = ((double)rand() / (RAND_MAX)) - 0.5;
 
 		startPositions[(i * 3)] = (float)rx * dist;
 		startPositions[(i * 3) + 1] = (float)ry * dist;
@@ -219,7 +220,7 @@ Geometry* Demo3() {
 	AnimationShaderInput asi;
 	asi.vertexSnippets = std::vector<std::string>{
 		
-		AnimationShader::NoiseMovement(10, 30),
+		AnimationShader::NoiseMovement(10, 4),
 	};
 	AnimationShader* as = new AnimationShader(asi);
 
@@ -377,8 +378,6 @@ Geometry* Demo8() {
 	AnimationShaderInput asi;
 	asi.vertexSnippets = std::vector<std::string>{
 		AnimationShader::Gravity(),
-		AnimationShader::NoiseMovement(),
-
 	};
 	AnimationShader* as = new AnimationShader(asi);
 	float duration = 20.0;
@@ -389,12 +388,12 @@ Geometry* Demo8() {
 	std::vector<GLfloat> sizes(numVertices);
 	std::vector<GLfloat> colors(numVertices * 3);
 
-	float spread = 50.;
+	float spread = 25.;
 
 	for (int i = 0; i < numVertices; i++) {
-		float rx = ((double)rand() / (RAND_MAX)) + 0.5;
-		float ry = ((double)rand() / (RAND_MAX)) + 0.5;
-		float rz = ((double)rand() / (RAND_MAX)) + 0.5;
+		float rx = ((double)rand() / (RAND_MAX)) - 0.5;
+		float ry = ((double)rand() / (RAND_MAX)) - 0.5;
+		float rz = ((double)rand() / (RAND_MAX)) - 0.5;
 
 		endPositions[(i * 3)] = (float)rx * spread;
 		endPositions[(i * 3) + 1] = (float)70;
@@ -404,8 +403,11 @@ Geometry* Demo8() {
 		startPositions[(i * 3) + 1] = (float)0;
 		startPositions[(i * 3) + 2] = (float)0;
 
+		colors[(i * 3)] = ((i + 500) % 255) / 255.;
+		colors[(i * 3) + 1] = (float)(i % 255) / 255.;
+		colors[(i * 3) + 2] = (float)((i + 88) % 255) / 255.;
 
-		sizes[i] = (rx * 6.0 + 1.0);
+		sizes[i] = (rx * 5.0 + 1.0);
 		startTimes[i] = (i / (float)numVertices) * duration;
 	}
 
@@ -416,7 +418,56 @@ Geometry* Demo8() {
 	buffers.sizes = sizes;
 	buffers.instanceCount = numVertices;
 	buffers.duration = duration;
+	buffers.colors = colors;
 
+	return new Geometry{ buffers, as->getProgram(), GL_POINTS, DrawFunc::ARRAY };
+}
+
+Geometry* Demo9() {
+	const int numVertices = 30000;
+
+	AnimationShaderInput asi;
+	asi.vertexSnippets = std::vector<std::string>{
+		AnimationShader::Gravity(50),
+		AnimationShader::NoiseMovement()
+	};
+	AnimationShader* as = new AnimationShader(asi);
+	float duration = 20.0;
+
+	std::vector<GLfloat> startPositions(numVertices * 3);
+	std::vector<GLfloat> endPositions(numVertices * 3);
+	std::vector<GLfloat> startTimes(numVertices);
+	std::vector<GLfloat> sizes(numVertices);
+	std::vector<GLfloat> colors(numVertices * 3);
+
+	float spread = 25.;
+
+	for (int i = 0; i < numVertices; i++) {
+		float rx = ((double)rand() / (RAND_MAX)) - 0.5;
+		float ry = ((double)rand() / (RAND_MAX)) - 0.5;
+		float rz = ((double)rand() / (RAND_MAX)) - 0.5;
+
+		endPositions[(i * 3)] = (float)rx * spread;
+		endPositions[(i * 3) + 1] = (float)70;
+		endPositions[(i * 3) + 2] = (float)rz * spread;
+
+		colors[(i * 3)] = 200 + (i % 55) / 55.;
+		colors[(i * 3) + 1] = (float)(i % 40) / 255.;
+		colors[(i * 3) + 2] = (float)((i + 16) % 40) / 255.;
+
+		sizes[i] = (rx * 5.0 + 1.0);
+		startTimes[i] = (i / (float)numVertices) * duration;
+	}
+
+	GeometryAttributeBuffers buffers;
+	buffers.startPositions = startPositions;//Geometry::RandomPositions(numVertices, spread);
+
+	buffers.endPositions = endPositions;
+	buffers.startTimes = startTimes;
+	buffers.sizes = sizes;
+	buffers.instanceCount = numVertices;
+	buffers.duration = duration;
+	buffers.colors = colors;
 
 	return new Geometry{ buffers, as->getProgram(), GL_POINTS, DrawFunc::ARRAY };
 }

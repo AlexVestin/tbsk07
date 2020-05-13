@@ -44,6 +44,21 @@ public:
 	virtual ~Geometry();
 	void setUpGeometryBuffers();
 	void draw(float t, GLfloat* tranMatrix, GLfloat* camMatrix, GLfloat* camPos);
+
+
+	static const std::vector<GLfloat> RandomPositions(int instanceCount, float spread, float c = 0) {
+		std::vector<GLfloat> positions(instanceCount);
+		float rx = ((double)rand() / (RAND_MAX)) - 0.5;
+		float ry = ((double)rand() / (RAND_MAX)) - 0.5;
+		float rz = ((double)rand() / (RAND_MAX)) - 0.5;
+		for (int i = 0; i < instanceCount; i++) {
+			positions[i * 3] = rx*spread + c;
+			positions[(i * 3) + 1] = ry* spread + c;
+			positions[(i * 3)] = rx * spread + c;
+
+		}
+		return positions;
+	}
 	
 	template <typename T = GLfloat>
 	int createBuffer(std::vector<typename T> data, GLuint attribLocation, GLuint elementSize) {
