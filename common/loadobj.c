@@ -1211,7 +1211,7 @@ void DrawModel(Model *m, GLuint program, const char* vertexVariableName, const c
 				ReportRerror("DrawModel", texCoordVariableName);
 		}
 
-		glDrawElements(GL_TRIANGLES, m->numIndices, GL_UNSIGNED_INT, 0L);
+		glDrawElements(GL_LINES, m->numIndices, GL_UNSIGNED_INT, 0L);
 	}
 }
 
