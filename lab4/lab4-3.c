@@ -122,7 +122,7 @@ void init(void)
 	projectionMatrix = frustum(-0.1, 0.1, -0.1, 0.1, 0.2, 50.0);
 
 	// Load and compile shader
-	program = loadShaders("terrain.vert", "terrain.frag");
+	program = loadShaders("old-terrain.vert", "old-terrain.frag");
 	glUseProgram(program);
 	printError("init shader");
 	

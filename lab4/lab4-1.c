@@ -39,6 +39,9 @@ Model* GenerateTerrain(TextureData *tex)
 	GLfloat *texCoordArray = malloc(sizeof(GLfloat) * 2 * vertexCount);
 	GLuint *indexArray = malloc(sizeof(GLuint) * triangleCount*3);
 	
+	for(int i = 0; i < tex->width * tex->height; i++) {
+		printf("%d\n", tex->imageData[i]);
+	}
 	printf("bpp %d %d\n", tex->bpp, vertexCount);
 	for (x = 0; x < tex->width; x++)
 		for (z = 0; z < tex->height; z++)
@@ -72,6 +75,8 @@ Model* GenerateTerrain(TextureData *tex)
 	
 	// Create Model and upload to GPU:
 
+	
+
 	Model* model = LoadDataToModel(
 			vertexArray,
 			normalArray,
@@ -80,7 +85,7 @@ Model* GenerateTerrain(TextureData *tex)
 			indexArray,
 			vertexCount,
 			triangleCount*3);
-
+	printf("%d num\n", model->numIndices);
 	return model;
 }
 
@@ -103,7 +108,7 @@ void init(void)
 	projectionMatrix = frustum(-0.1, 0.1, -0.1, 0.1, 0.2, 50.0);
 
 	// Load and compile shader
-	program = loadShaders("terrain.vert", "terrain.frag");
+	program = loadShaders("old-terrain.vert", "old-terrain.frag");
 	glUseProgram(program);
 	printError("init shader");
 	
@@ -113,7 +118,7 @@ void init(void)
 	
 // Load terrain data
 	
-	LoadTGATextureData("44-terrain.tga", &ttex);
+	LoadTGATextureData("fft-terrain.tga", &ttex);
 	tm = GenerateTerrain(&ttex);
 	printError("init terrain");
 }

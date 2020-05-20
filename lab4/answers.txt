@@ -1,0 +1,37 @@
+1.
+What kind of data does the heightmap image data hold? What range is the heightmap data?
+
+Numbers for the height, the heightmap has a bits per pixel that is 24, and three colors per
+pixel, which makes the range [0, 255]
+
+The terrain is 4x4. How many polygons does it draw?
+There are 18 polygons drawn.
+
+2.
+Did you need to extend your camera movement code? How?
+We added camera the option to look around using mouse drag and keyboard controls to move straight up, down, right and left.
+To do this we used the delta distance of the mouse position to obtain the pitch and yaw, and then used the lookAt function.
+
+3.
+Which method did you use to find the normal vector?
+We used the neighbouring vertices approximation.
+
+4.
+To figure out what surface to use we place the point into its grid position. 
+Since we know it's in the square, we know it's in one of two triangles. To find out which triangle it's located in
+we simply took it's x and y offsets from the grid lower left corner and added them together. If the sum was greater than one 
+we would be in the right-most triangle, less than one in the left-most one. 
+
+To get the height of the point we used the triangles height values and the points offset and used Barycentric coordinates
+along with linear interpolation to get the height.
+
+5.
+What kind of multitexturing function did you implement?
+We used a simple kind of multitexturing, where we mixed the terrain texture of a flower with a snow texture based on the height value
+(vertex y position). This way we got snowy mountains!
+
+6b) Objects with terrain dependent slope
+How did you apply the slope on objects?
+We used the normals from the terrain to obtain a direction vector, then we used rotation around an arbitrary axis
+by taking the cross product of the normalvector and the up-vector to obtain the axis. We then used the angle from 
+the up vector to the normals and used ArbRtate() to get the correct rotation matrix.

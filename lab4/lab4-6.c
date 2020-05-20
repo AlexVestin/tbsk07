@@ -29,7 +29,7 @@ float xScale = 4.0f;
 float zScale = 4.0f;
 
 
-const int amt = 50000;
+const int amt = 2000;
 GLuint vao, vbo, ivbo, nbo;
 GLuint treeProgram;
 GLuint dbVao, dbProgram, numNormals;
@@ -319,7 +319,6 @@ void init(void)
 		float py = height;
 		float pz = (float) z / zScale;
 
-		// https://stackoverflow.com/questions/15101103/euler-angles-between-two-3d-vectors
 		float nx = tm->normalArray[(x + z * ttex.width)*3 + 0];
 		float ny = tm->normalArray[(x + z * ttex.width)*3 + 1];
 		float nz = tm->normalArray[(x + z * ttex.width)*3 + 2];
@@ -489,8 +488,6 @@ void mouse(int x, int y) {
 		cameraFront.z = sinf(toRad(yaw)) * cosf(toRad(pitch));
 		lookAtPoint = Normalize(cameraFront);
 	}
-	
-	
 	lastx = x;
 	lasty = y;
 }
@@ -505,7 +502,6 @@ void mousePress(int button, int state, int x , int y) {
 
 int main(int argc, char **argv)
 {
-
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
 	glutInitContextVersion(3, 2);
